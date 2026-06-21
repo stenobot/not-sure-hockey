@@ -150,17 +150,10 @@ em { font-style: normal; color: var(--red); }
   position: relative;
   animation: rise 0.7s ease both 0.45s;
 }
-.ticket::before, .ticket::after {
-  content: ''; position: absolute; top: 38px; width: 22px; height: 22px;
-  background: var(--amber); border: 3px solid var(--ink); border-radius: 50%;
-}
-.ticket::before { left: -14px; }
-.ticket::after { right: -14px; }
 .ticket__head {
   background: var(--red); color: var(--cream);
   font-family: var(--font-display); text-transform: uppercase; letter-spacing: 0.1em;
   font-size: 1.05rem; padding: 0.45rem 1rem;
-  border-bottom: 3px dashed var(--amber);
 }
 .ticket__body { padding: 1rem 1.1rem 1.2rem; }
 .ticket__empty { color: var(--ink-soft); font-weight: 500; }
