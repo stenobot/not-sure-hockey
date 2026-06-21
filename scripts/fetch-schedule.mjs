@@ -2,7 +2,7 @@
 // Primary source: the team schedule HTML table (clean columns incl. score/result).
 
 import { config, teamUrl } from './lib/config.mjs';
-import { fetchDom, clean, writeJson, nowIso } from './lib/parse.mjs';
+import { fetchDom, clean, num, writeJson, nowIso, runScraper } from './lib/parse.mjs';
 
 const MONTHS = {
   Jan: '01', Feb: '02', Mar: '03', Apr: '04', May: '05', Jun: '06',
@@ -60,7 +60,7 @@ async function main() {
       const tds = $(tr).find('> td');
       if (tds.length < 9) return;
 
-      const num = clean($(tds[0]).text());
+      const gameNum = clean($(tds[0]).text());
       const dateLabel = clean($(tds[1]).text()); // "Mon, May 11"
       const time = clean($(tds[2]).text());
       const arenaLabel = clean($(tds[3]).text());
@@ -88,7 +88,7 @@ async function main() {
       const gameIdMatch = (statusHref || '').match(/\/game\/(\d+)\//);
 
       games.push({
-        num: num ? parseInt(num, 10) : null,
+        num: num(gameNum),
         date,
         dateLabel,
         time,
@@ -136,7 +136,4 @@ async function main() {
   console.log(`Parsed ${games.length} games. Season: ${season || 'unknown'}.`);
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+runScraper(main);

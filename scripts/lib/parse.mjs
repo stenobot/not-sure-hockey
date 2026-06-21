@@ -31,6 +31,22 @@ export function clean(text) {
   return (text || '').replace(/\s+/g, ' ').trim();
 }
 
+// Parse text to a number; null if blank, or the original string if non-numeric.
+export function num(text) {
+  const t = clean(text);
+  if (t === '') return null;
+  const n = Number(t);
+  return Number.isNaN(n) ? t : n;
+}
+
+// Run a scraper's async main() with consistent error handling.
+export function runScraper(fn) {
+  fn().catch((err) => {
+    console.error(err);
+    process.exit(1);
+  });
+}
+
 // Write a JSON file, but keep the last-good copy if the new payload looks empty.
 // `isEmpty` decides whether the freshly scraped data should be rejected.
 export async function writeJson(filename, data, isEmpty) {

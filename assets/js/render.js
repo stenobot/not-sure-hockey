@@ -124,7 +124,7 @@ function gameCard(g, opts = {}) {
       <div class="game__main">
         <div class="game__ha">${escape(ha)}</div>
         <div class="game__opp">${escape(g.opponent || 'TBD')}</div>
-        <div class="game__meta">${escape(g.dayLabel || g.time || '')}${g.arena ? ' · ' + escape(g.arena) : ''}</div>
+        <div class="game__meta">${escape(g.time || '')}${g.arena ? ' · ' + escape(g.arena) : ''}</div>
       </div>
       <div class="game__right">${right}${link}</div>
     </li>`;

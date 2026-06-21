@@ -4,19 +4,12 @@
 // divisions or season.
 
 import { config } from './lib/config.mjs';
-import { fetchDom, clean, writeJson, nowIso } from './lib/parse.mjs';
+import { fetchDom, clean, num, writeJson, nowIso, runScraper } from './lib/parse.mjs';
 
 const COLUMNS = [
   'rank', 'team', 'gp', 'w', 'l', 't', 'otl',
   'pts', 'ptsPct', 'gf', 'gfa', 'ga', 'gaa', 'pim',
 ];
-
-function numish(text) {
-  const t = clean(text);
-  if (t === '') return null;
-  const n = Number(t);
-  return Number.isNaN(n) ? t : n;
-}
 
 async function main() {
   const url = `${config.baseUrl}/standings`;
@@ -65,7 +58,7 @@ async function main() {
       if (key === 'team') {
         row.team = clean(link.text()) || clean($(cells[i]).text());
       } else {
-        row[key] = numish($(cells[i]).text());
+        row[key] = num($(cells[i]).text());
       }
     });
     standings.push(row);
@@ -90,7 +83,4 @@ async function main() {
   console.log(`Parsed ${standings.length} standings rows for ${division}.`);
 }
 
-main().catch((err) => {
-  console.error(err);
-  process.exit(1);
-});
+runScraper(main);
