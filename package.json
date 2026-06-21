@@ -1,0 +1,16 @@
+{
+  "name": "not-sure-hockey",
+  "version": "1.0.0",
+  "description": "Website for the Not Sure hockey team (Kraken Hockey League).",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "fetch:schedule": "node scripts/fetch-schedule.mjs",
+    "fetch:standings": "node scripts/fetch-standings.mjs",
+    "fetch:all": "npm run fetch:schedule && npm run fetch:standings",
+    "serve": "node scripts/serve.mjs"
+  },
+  "dependencies": {
+    "cheerio": "^1.0.0"
+  }
+}

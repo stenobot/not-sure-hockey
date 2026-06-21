@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Not Sure Hockey — Kraken Hockey League</title>
+  <meta name="description" content="Schedule, results and standings for the Not Sure hockey team in the Kraken Hockey League." />
+  <link rel="icon" type="image/svg+xml" href="assets/img/star.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Schibsted+Grotesk:wght@400;500;700;900&family=Spline+Sans+Mono:wght@500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="assets/css/styles.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <!-- ===== Header / Nav ===== -->
+  <header class="site-header">
+    <a href="#home" class="brand">
+      <img src="assets/img/star.svg" alt="Not Sure star" class="brand__mark" />
+      <span class="brand__name">Not&nbsp;Sure</span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#schedule">Schedule</a>
+      <a href="#standings">Standings</a>
+    </nav>
+    <a class="cal-btn" href="webcal://krakenhockeyleague.com/ical/13343" title="Subscribe to the schedule">
+      <span class="cal-btn__plus">+</span> Calendar
+    </a>
+  </header>
+
+  <main>
+    <!-- ===== Hero ===== -->
+    <section id="home" class="hero">
+      <div class="hero__inner">
+        <div class="hero__copy">
+          <p class="hero__eyebrow">Kraken Hockey League · <span id="hero-division">—</span></p>
+          <h1 class="hero__title"><img src="assets/img/logo.svg" alt="Not Sure Hockey Club" class="hero__logo" /></h1>
+
+          <div class="hero__stats" id="hero-record">
+            <div class="statblock">
+              <span class="statblock__num" data-stat="w">0</span>
+              <span class="statblock__label">Wins</span>
+            </div>
+            <div class="statblock">
+              <span class="statblock__num" data-stat="l">0</span>
+              <span class="statblock__label">Losses</span>
+            </div>
+            <div class="statblock">
+              <span class="statblock__num" data-stat="t">0</span>
+              <span class="statblock__label">Ties</span>
+            </div>
+            <div class="statblock statblock--rank">
+              <span class="statblock__num" data-stat="rank">—</span>
+              <span class="statblock__label">In Division</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Next game ticket -->
+        <aside class="ticket" id="next-game" aria-live="polite">
+          <div class="ticket__head">Next Faceoff</div>
+          <div class="ticket__body"><p class="ticket__empty">Loading…</p></div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- ===== Schedule & Results ===== -->
+    <section id="schedule" class="section">
+      <div class="section__head">
+        <h2 class="section__title">Schedule <em>&amp;</em> Results</h2>
+        <p class="section__sub" id="schedule-sub">Summer 2026</p>
+      </div>
+
+      <div class="sched-cols">
+        <div class="sched-col">
+          <h3 class="sched-col__title">Upcoming</h3>
+          <ol class="game-list" id="upcoming-list"><li class="loading">Loading…</li></ol>
+        </div>
+        <div class="sched-col">
+          <h3 class="sched-col__title">Results</h3>
+          <ol class="game-list" id="results-list"><li class="loading">Loading…</li></ol>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Standings ===== -->
+    <section id="standings" class="section">
+      <div class="section__head">
+        <h2 class="section__title"><em id="standings-division">Division</em> Standings</h2>
+        <p class="section__sub" id="standings-sub">Summer 2026</p>
+      </div>
+      <div class="table-wrap">
+        <table class="standings" id="standings-table">
+          <thead>
+            <tr>
+              <th class="ta-c">#</th><th>Team</th>
+              <th class="ta-c">GP</th><th class="ta-c">W</th><th class="ta-c">L</th>
+              <th class="ta-c">T</th><th class="ta-c">PTS</th>
+              <th class="ta-c hide-sm">GF</th><th class="ta-c hide-sm">GA</th>
+            </tr>
+          </thead>
+          <tbody id="standings-body">
+            <tr><td colspan="9" class="loading">Loading…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- ===== Photo ===== -->
+    <section id="photo" class="section photo-section">
+      <figure class="photo-frame">
+        <img src="assets/img/rink.jpg" alt="Not Sure player number 4 at the boards during a Kraken Hockey League game" loading="lazy" />
+      </figure>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="site-footer__inner">
+      <div>
+        <p class="site-footer__name">Not Sure · Kraken Hockey League</p>
+        <p class="site-footer__meta">
+          Live data from the
+          <a href="https://krakenhockeyleague.com/team/13343/schedule" target="_blank" rel="noopener">league site</a>.
+          Last updated <span id="last-updated">—</span>.
+        </p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="assets/js/render.js" defer></script>
+</body>
+</html>
