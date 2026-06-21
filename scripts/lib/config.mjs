@@ -1,8 +1,12 @@
 // Shared configuration for the Not Sure Hockey data scrapers.
 
+// The teams this site covers. `default: true` marks the team shown on first visit.
+export const teams = [
+  { id: '13343', name: 'Not Sure', division: 'Division 6D', default: true },
+  { id: '9572', name: 'Not Sure', division: 'Division 5A' },
+];
+
 export const config = {
-  teamId: '13343',
-  teamName: 'Not Sure',
   baseUrl: 'https://krakenhockeyleague.com',
   // A normal browser User-Agent. The league site returns minimal/blocked
   // content to generic clients, so we identify as a browser.
@@ -11,6 +15,6 @@ export const config = {
     '(KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36',
 };
 
-export function teamUrl(suffix) {
-  return `${config.baseUrl}/team/${config.teamId}/${suffix}`;
+export function teamUrl(teamId, suffix) {
+  return `${config.baseUrl}/team/${teamId}/${suffix}`;
 }

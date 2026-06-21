@@ -1,9 +1,9 @@
-// Scrapes the team's division standings into data/standings.json.
-// Source: /standings (contains all divisions). We auto-detect the division
-// table that contains our team, so this keeps working if the team changes
-// divisions or season.
+// Scrapes each team's division standings into data/<teamId>/standings.json.
+// Source: /standings (contains all divisions, fetched once). For each team we
+// auto-detect the division table that contains it, so this keeps working if a
+// team changes divisions or season.
 
-import { config } from './lib/config.mjs';
+import { teams, config } from './lib/config.mjs';
 import { fetchDom, clean, num, writeJson, nowIso, runScraper } from './lib/parse.mjs';
 
 const COLUMNS = [
@@ -11,19 +11,16 @@ const COLUMNS = [
   'pts', 'ptsPct', 'gf', 'gfa', 'ga', 'gaa', 'pim',
 ];
 
-async function main() {
-  const url = `${config.baseUrl}/standings`;
-  const $ = await fetchDom(url);
-
+function scrapeTeam($, team, url) {
   // Walk headings and tables in document order. Track the most recent
-  // division heading; the table that links to our team belongs to it.
+  // division heading; the table that links to this team belongs to it.
   let $table = null;
   let division = null;
   let lastHeading = null;
   $('h1, h2, table').each((_, el) => {
     if ($table) return;
     if (el.tagName === 'table') {
-      if ($(el).find(`a[href*="/team/${config.teamId}/"]`).length) {
+      if ($(el).find(`a[href*="/team/${team.id}/"]`).length) {
         $table = $(el);
         division = lastHeading;
       }
@@ -34,9 +31,8 @@ async function main() {
   });
 
   if (!$table) {
-    await writeJson('standings.json', { team: config.teamName, division: null, updated: nowIso(), standings: [] }, () => true);
-    console.warn('Could not find a standings table containing the team.');
-    return;
+    console.warn(`[${team.id}] no standings table found for team.`);
+    return { team: team.name, teamId: team.id, division: null, source: url, updated: nowIso(), standings: [] };
   }
 
   const standings = [];
@@ -52,7 +48,7 @@ async function main() {
     const row = {
       teamId,
       teamUrl: href ? config.baseUrl + href : null,
-      isOurTeam: teamId === config.teamId,
+      isOurTeam: teamId === team.id,
     };
     COLUMNS.forEach((key, i) => {
       if (key === 'team') {
@@ -66,21 +62,19 @@ async function main() {
 
   standings.sort((a, b) => (a.rank ?? 999) - (b.rank ?? 999));
 
-  const payload = {
-    team: config.teamName,
-    teamId: config.teamId,
-    division,
-    source: url,
-    updated: nowIso(),
-    standings,
-  };
-
-  await writeJson(
-    'standings.json',
-    payload,
-    (d) => !d.standings || d.standings.length === 0
-  );
-  console.log(`Parsed ${standings.length} standings rows for ${division}.`);
+  return { team: team.name, teamId: team.id, division, source: url, updated: nowIso(), standings };
 }
 
-runScraper(main);
+runScraper(async () => {
+  const url = `${config.baseUrl}/standings`;
+  const $ = await fetchDom(url); // fetch the league-wide standings page once
+  for (const team of teams) {
+    const payload = scrapeTeam($, team, url);
+    await writeJson(
+      `${team.id}/standings.json`,
+      payload,
+      (d) => !d.standings || d.standings.length === 0
+    );
+    console.log(`[${team.id}] ${payload.standings.length} rows for ${payload.division}.`);
+  }
+});

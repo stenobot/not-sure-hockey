@@ -2,10 +2,9 @@
    Not Sure Hockey — data loading & rendering
    ========================================================= */
 
-const DATA = {
-  schedule: 'data/schedule.json',
-  standings: 'data/standings.json',
-};
+const TEAMS_MANIFEST = 'data/teams.json';
+const STORAGE_KEY = 'nshc-team';
+const teamData = (id, file) => `data/${id}/${file}.json`;
 
 const MONTH_ABBR = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -173,11 +172,11 @@ function renderStandings(standings, season) {
     </tr>`).join('');
 }
 
-/* ---------- boot ---------- */
-async function boot() {
+/* ---------- team switching ---------- */
+async function loadTeam(teamId) {
   const [schedule, standings] = await Promise.all([
-    loadJson(DATA.schedule).catch(() => ({ games: [] })),
-    loadJson(DATA.standings).catch(() => ({ standings: [], division: null })),
+    loadJson(teamData(teamId, 'schedule')).catch(() => ({ games: [] })),
+    loadJson(teamData(teamId, 'standings')).catch(() => ({ standings: [], division: null })),
   ]);
 
   renderHero(schedule, standings);
@@ -187,6 +186,40 @@ async function boot() {
   const updated = [schedule.updated, standings.updated]
     .filter(Boolean).sort().pop();
   el('#last-updated').textContent = fmtUpdated(updated);
+}
+
+function buildTeamSwitcher(manifest, currentId, onChange) {
+  const select = el('#team-select');
+  if (!select) return;
+  select.innerHTML = (manifest.teams || [])
+    .map((t) => `<option value="${escape(t.id)}"${t.id === currentId ? ' selected' : ''}>${escape((t.division || t.name).toUpperCase())}</option>`)
+    .join('');
+  select.addEventListener('change', () => onChange(select.value));
+}
+
+/* ---------- boot ---------- */
+async function boot() {
+  const manifest = await loadJson(TEAMS_MANIFEST).catch(() => null);
+  const teams = (manifest && manifest.teams) || [];
+  const validId = (id) => teams.some((t) => t.id === id);
+
+  const stored = (() => { try { return localStorage.getItem(STORAGE_KEY); } catch { return null; } })();
+  const fallback = (manifest && manifest.default) || (teams[0] && teams[0].id);
+  let currentId = validId(stored) ? stored : fallback;
+
+  const switchTo = (id) => {
+    if (!validId(id)) return;
+    currentId = id;
+    try { localStorage.setItem(STORAGE_KEY, id); } catch { /* ignore */ }
+    loadTeam(id);
+  };
+
+  if (manifest) buildTeamSwitcher(manifest, currentId, switchTo);
+
+  if (currentId) {
+    try { localStorage.setItem(STORAGE_KEY, currentId); } catch { /* ignore */ }
+    await loadTeam(currentId);
+  }
 }
 
 document.addEventListener('DOMContentLoaded', boot);

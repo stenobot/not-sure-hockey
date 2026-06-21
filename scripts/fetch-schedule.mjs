@@ -1,7 +1,7 @@
-// Scrapes the team Schedule & Results table into data/schedule.json.
+// Scrapes each team's Schedule & Results table into data/<teamId>/schedule.json.
 // Primary source: the team schedule HTML table (clean columns incl. score/result).
 
-import { config, teamUrl } from './lib/config.mjs';
+import { teams, config, teamUrl } from './lib/config.mjs';
 import { fetchDom, clean, num, writeJson, nowIso, runScraper } from './lib/parse.mjs';
 
 const MONTHS = {
@@ -35,8 +35,8 @@ function parseScore(raw, result) {
   return { teamScore: a, oppScore: b }; // tie or unknown
 }
 
-async function main() {
-  const url = teamUrl('schedule');
+async function scrapeTeam(team) {
+  const url = teamUrl(team.id, 'schedule');
   const $ = await fetchDom(url);
 
   const games = [];
@@ -117,23 +117,25 @@ async function main() {
   // per-season schedule links.
   let season = clean($('#btnGroupDrop1').first().text()) || null;
   if (!season) {
-    const $seasonLink = $(`a[href*="/team/${config.teamId}/schedule/?season="]`).first();
+    const $seasonLink = $(`a[href*="/team/${team.id}/schedule/?season="]`).first();
     if ($seasonLink.length) {
       season = clean($seasonLink.closest('ul').prev().text()) || null;
     }
   }
 
   const payload = {
-    team: config.teamName,
-    teamId: config.teamId,
+    team: team.name,
+    teamId: team.id,
     season,
     source: url,
     updated: nowIso(),
     games,
   };
 
-  await writeJson('schedule.json', payload, (d) => !d.games || d.games.length === 0);
-  console.log(`Parsed ${games.length} games. Season: ${season || 'unknown'}.`);
+  await writeJson(`${team.id}/schedule.json`, payload, (d) => !d.games || d.games.length === 0);
+  console.log(`[${team.id}] ${games.length} games. Season: ${season || 'unknown'}.`);
 }
 
-runScraper(main);
+runScraper(async () => {
+  for (const team of teams) await scrapeTeam(team);
+});

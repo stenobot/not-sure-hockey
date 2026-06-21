@@ -60,7 +60,7 @@ em { font-style: normal; color: var(--red); }
   border-bottom: 3px solid var(--red);
   box-shadow: 0 4px 0 rgba(0,0,0,0.18);
 }
-.brand { display: flex; align-items: center; gap: 0.55rem; margin-right: auto; }
+.brand { display: flex; align-items: center; gap: 0.55rem; }
 .brand__mark {
   width: 40px; height: 40px;
   object-fit: contain;
@@ -71,7 +71,29 @@ em { font-style: normal; color: var(--red); }
   color: var(--red); text-transform: uppercase;
   line-height: 1;
 }
-.nav { display: flex; gap: clamp(0.8rem, 2vw, 1.8rem); }
+
+/* Team switcher */
+.team-switch {
+  position: relative; display: inline-flex; align-items: center;
+}
+.team-switch__select {
+  appearance: none; -webkit-appearance: none;
+  font-family: var(--font-display); text-transform: uppercase; letter-spacing: 0.04em;
+  font-size: 1rem; line-height: 1;
+  color: var(--amber); background: transparent;
+  border: 2px solid var(--red); border-radius: 2px;
+  padding: 0.34rem 2.1rem 0.34rem 0.7rem; min-width: 11rem;
+  cursor: pointer; transition: border-color 0.15s ease, color 0.15s ease;
+}
+.team-switch__select:hover { border-color: var(--amber); }
+.team-switch__select:focus-visible { outline: 2px solid var(--amber); outline-offset: 1px; }
+.team-switch__select option { background: var(--ink); color: var(--cream); font-family: var(--font-body); }
+.team-switch__caret {
+  position: absolute; right: 0.55rem; top: 50%; transform: translateY(-50%);
+  color: var(--amber); font-size: 0.8rem; pointer-events: none;
+}
+
+.nav { display: flex; gap: clamp(0.8rem, 2vw, 1.8rem); margin-left: auto; }
 .nav a {
   font-weight: 700; font-size: 0.82rem; letter-spacing: 0.14em;
   text-transform: uppercase; color: var(--cream);
@@ -305,4 +327,7 @@ em { font-style: normal; color: var(--red); }
   .nav { display: none; }
   .hide-sm { display: none; }
   .brand__name { font-size: 1.25rem; }
+  .site-header { gap: 0.6rem; }
+  .cal-btn { margin-left: auto; }
+  .team-switch__select { font-size: 0.85rem; padding: 0.3rem 1.8rem 0.3rem 0.55rem; min-width: 0; }
 }

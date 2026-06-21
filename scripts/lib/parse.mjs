@@ -62,7 +62,7 @@ export async function writeJson(filename, data, isEmpty) {
       // No previous file: fall through and write the (empty) result.
     }
   }
-  await mkdir(DATA_DIR, { recursive: true });
+  await mkdir(dirname(path), { recursive: true });
   await writeFile(path, JSON.stringify(data, null, 2) + '\n', 'utf8');
   console.log(`[${filename}] wrote ${path}`);
   return true;
