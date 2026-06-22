@@ -29,10 +29,24 @@
     <nav class="nav" aria-label="Primary">
       <a href="#schedule">Schedule</a>
       <a href="#standings">Standings</a>
+      <a href="#stats">Stats</a>
     </nav>
-    <a class="cal-btn" href="webcal://krakenhockeyleague.com/ical/13343" title="Subscribe to the schedule">
+    <a class="cal-btn" id="cal-btn" href="webcal://krakenhockeyleague.com/ical/13343" title="Subscribe to the schedule">
       <span class="cal-btn__plus">+</span> Calendar
     </a>
+    <div class="menu">
+      <button class="menu__toggle" id="menu-toggle" aria-expanded="false" aria-controls="menu-panel" aria-label="Open menu">
+        <span class="menu__bars" aria-hidden="true"></span>
+      </button>
+      <div class="menu__panel" id="menu-panel" hidden>
+        <a href="#schedule">Schedule</a>
+        <a href="#standings">Standings</a>
+        <a href="#stats">Stats</a>
+        <a class="menu__cal" id="cal-btn-menu" href="webcal://krakenhockeyleague.com/ical/13343">
+          <span class="cal-btn__plus">+</span> Calendar
+        </a>
+      </div>
+    </div>
   </header>
 
   <main>
@@ -110,6 +124,17 @@
             <tr><td colspan="9" class="loading">Loading…</td></tr>
           </tbody>
         </table>
+      </div>
+    </section>
+
+    <!-- ===== Team Leaders ===== -->
+    <section id="stats" class="section">
+      <div class="section__head">
+        <h2 class="section__title">Team <em>Leaders</em></h2>
+        <p class="section__sub" id="stats-sub">Summer 2026</p>
+      </div>
+      <div class="stat-grid" id="stats-grid">
+        <p class="loading">Loading…</p>
       </div>
     </section>
 

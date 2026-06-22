@@ -8,7 +8,8 @@
     "build:teams": "node scripts/build-teams.mjs",
     "fetch:schedule": "node scripts/fetch-schedule.mjs",
     "fetch:standings": "node scripts/fetch-standings.mjs",
-    "fetch:all": "npm run build:teams && npm run fetch:schedule && npm run fetch:standings",
+    "fetch:stats": "node scripts/fetch-stats.mjs",
+    "fetch:all": "npm run build:teams && npm run fetch:schedule && npm run fetch:standings && npm run fetch:stats",
     "serve": "node scripts/serve.mjs"
   },
   "dependencies": {

@@ -1,0 +1,135 @@
+{
+  "team": "Not Sure",
+  "teamId": "13343",
+  "season": "Summer 2026",
+  "source": "https://krakenhockeyleague.com/team/13343/home",
+  "updated": "2026-06-22T15:10:07.520Z",
+  "categories": [
+    {
+      "key": "goals",
+      "label": "Goals",
+      "leaders": [
+        {
+          "number": "29",
+          "name": "Nate Tarampi",
+          "value": "3"
+        },
+        {
+          "number": "87",
+          "name": "Justin Geffrey",
+          "value": "2"
+        },
+        {
+          "number": "16",
+          "name": "Ryan Benson",
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "key": "assists",
+      "label": "Assists",
+      "leaders": [
+        {
+          "number": "87",
+          "name": "Justin Geffrey",
+          "value": "3"
+        },
+        {
+          "number": "65",
+          "name": "Blair McLaughlin",
+          "value": "3"
+        },
+        {
+          "number": "16",
+          "name": "Ryan Benson",
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "key": "points",
+      "label": "Points",
+      "leaders": [
+        {
+          "number": "87",
+          "name": "Justin Geffrey",
+          "value": "5"
+        },
+        {
+          "number": "16",
+          "name": "Ryan Benson",
+          "value": "4"
+        },
+        {
+          "number": "65",
+          "name": "Blair McLaughlin",
+          "value": "4"
+        }
+      ]
+    },
+    {
+      "key": "gaa",
+      "label": "GAA",
+      "leaders": [
+        {
+          "number": "33",
+          "name": "John Heacock",
+          "value": "0.00"
+        },
+        {
+          "number": "41",
+          "name": "BRIAN CHACOSKY",
+          "value": "0.00"
+        },
+        {
+          "number": "29",
+          "name": "Zach Stacy",
+          "value": "0.00"
+        }
+      ]
+    },
+    {
+      "key": "ga",
+      "label": "GA",
+      "leaders": [
+        {
+          "number": "33",
+          "name": "John Heacock",
+          "value": "0"
+        },
+        {
+          "number": "41",
+          "name": "BRIAN CHACOSKY",
+          "value": "0"
+        },
+        {
+          "number": "29",
+          "name": "Zach Stacy",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "key": "savePct",
+      "label": "Save%",
+      "leaders": [
+        {
+          "number": "33",
+          "name": "John Heacock",
+          "value": "100.0%"
+        },
+        {
+          "number": "30",
+          "name": "Luis Quintana",
+          "value": "90.9%"
+        },
+        {
+          "number": "41",
+          "name": "BRIAN CHACOSKY",
+          "value": "0.0%"
+        }
+      ]
+    }
+  ]
+}

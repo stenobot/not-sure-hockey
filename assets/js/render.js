@@ -172,20 +172,57 @@ function renderStandings(standings, season) {
     </tr>`).join('');
 }
 
+/* ---------- team leaders / stats ---------- */
+function statCard(cat) {
+  const leaders = (cat.leaders || []).map((p, i) => `
+    <li class="leader${i === 0 ? ' leader--top' : ''}">
+      ${p.number ? `<span class="leader__num">#${escape(p.number)}</span>` : '<span class="leader__num"></span>'}
+      <span class="leader__name">${escape(p.name || '')}</span>
+      <span class="leader__val">${escape(p.value ?? '')}</span>
+    </li>`).join('');
+  return `
+    <div class="stat-card">
+      <h3 class="stat-card__title">${escape(cat.label || '')}</h3>
+      <ol class="leader-list">${leaders || '<li class="leader leader--empty">—</li>'}</ol>
+    </div>`;
+}
+
+function renderStats(stats, season) {
+  const cats = (stats.categories || []).filter((c) => (c.leaders || []).length);
+  el('#stats-sub').textContent = stats.season || season || '';
+  const grid = el('#stats-grid');
+  if (!grid) return;
+  grid.innerHTML = cats.length
+    ? cats.map(statCard).join('')
+    : '<p class="empty-note">Stats not available yet.</p>';
+}
+
 /* ---------- team switching ---------- */
 async function loadTeam(teamId) {
-  const [schedule, standings] = await Promise.all([
+  const [schedule, standings, stats] = await Promise.all([
     loadJson(teamData(teamId, 'schedule')).catch(() => ({ games: [] })),
     loadJson(teamData(teamId, 'standings')).catch(() => ({ standings: [], division: null })),
+    loadJson(teamData(teamId, 'stats')).catch(() => ({ categories: [] })),
   ]);
 
   renderHero(schedule, standings);
   renderSchedule(schedule);
   renderStandings(standings, schedule.season);
+  renderStats(stats, schedule.season);
+  updateCalendarLinks(teamId);
 
-  const updated = [schedule.updated, standings.updated]
+  const updated = [schedule.updated, standings.updated, stats.updated]
     .filter(Boolean).sort().pop();
   el('#last-updated').textContent = fmtUpdated(updated);
+}
+
+// Point the calendar subscribe links at the currently selected team.
+function updateCalendarLinks(teamId) {
+  const href = `webcal://krakenhockeyleague.com/ical/${teamId}`;
+  for (const sel of ['#cal-btn', '#cal-btn-menu']) {
+    const node = el(sel);
+    if (node) node.setAttribute('href', href);
+  }
 }
 
 function buildTeamSwitcher(manifest, currentId, onChange) {
@@ -195,6 +232,32 @@ function buildTeamSwitcher(manifest, currentId, onChange) {
     .map((t) => `<option value="${escape(t.id)}"${t.id === currentId ? ' selected' : ''}>${escape((t.division || t.name).toUpperCase())}</option>`)
     .join('');
   select.addEventListener('change', () => onChange(select.value));
+}
+
+/* ---------- overflow menu ---------- */
+function initMenu() {
+  const toggle = el('#menu-toggle');
+  const panel = el('#menu-panel');
+  if (!toggle || !panel) return;
+
+  const setOpen = (open) => {
+    toggle.setAttribute('aria-expanded', String(open));
+    panel.hidden = !open;
+  };
+
+  toggle.addEventListener('click', (e) => {
+    e.stopPropagation();
+    setOpen(panel.hidden);
+  });
+  panel.addEventListener('click', (e) => {
+    if (e.target.closest('a')) setOpen(false);
+  });
+  document.addEventListener('click', (e) => {
+    if (!panel.hidden && !e.target.closest('.menu')) setOpen(false);
+  });
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && !panel.hidden) { setOpen(false); toggle.focus(); }
+  });
 }
 
 /* ---------- boot ---------- */
@@ -215,6 +278,7 @@ async function boot() {
   };
 
   if (manifest) buildTeamSwitcher(manifest, currentId, switchTo);
+  initMenu();
 
   if (currentId) {
     try { localStorage.setItem(STORAGE_KEY, currentId); } catch { /* ignore */ }

@@ -8,10 +8,11 @@ introduce a bundler, TypeScript, or a frontend framework.
 ## Commands
 
 - `npm run fetch:all` — full data refresh: builds `data/teams.json`, then scrapes
-  schedule and standings for every configured team. Requires `cheerio`
-  (`npm install` if `node_modules` is missing).
-- `npm run build:teams` / `npm run fetch:schedule` / `npm run fetch:standings` —
-  run an individual stage. To refresh **one** data type, run that single script.
+  schedule, standings, and team-leader stats for every configured team. Requires
+  `cheerio` (`npm install` if `node_modules` is missing).
+- `npm run build:teams` / `npm run fetch:schedule` / `npm run fetch:standings` /
+  `npm run fetch:stats` — run an individual stage. To refresh **one** data type,
+  run that single script.
 - `npm run serve` — static preview server at http://localhost:8765.
 - There is **no test or lint suite**. Validate scraper changes by running the
   relevant `fetch:*` script and inspecting the regenerated `data/**/*.json`.
@@ -20,7 +21,7 @@ introduce a bundler, TypeScript, or a frontend framework.
 
 ```
 config.mjs (teams list) ─► scrapers fetch league HTML ─► parse w/ cheerio
-   ─► data/<teamId>/{schedule,standings}.json + data/teams.json manifest
+   ─► data/<teamId>/{schedule,standings,stats}.json + data/teams.json manifest
    ─► committed to repo ─► push triggers deploy.yml (Pages)
    ─► index.html + assets/js/render.js fetch the selected team's JSON, render
 ```

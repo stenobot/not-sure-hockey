@@ -26,6 +26,7 @@ issues with the league site and keeps the page fast.
 |------|--------|
 | Schedule & results | `https://krakenhockeyleague.com/team/<teamId>/schedule` |
 | Standings | `https://krakenhockeyleague.com/standings` (division auto‑detected per team) |
+| Team leaders | `https://krakenhockeyleague.com/team/<teamId>/home` (Team Leaders section) |
 | Calendar subscribe | `webcal://krakenhockeyleague.com/ical/<teamId>` |
 
 Teams are configured in `scripts/lib/config.mjs` — adding another is a one‑line change there.
@@ -33,7 +34,7 @@ Teams are configured in `scripts/lib/config.mjs` — adding another is a one‑l
 ## Project layout
 
 ```
-index.html              Single-page site (hero, schedule, standings) + team switcher
+index.html              Single-page site (hero, schedule, standings, team leaders) + team switcher
 CNAME                   Custom domain (notsurehockey.com)
 assets/
   css/styles.css        Theme (background #F8B53C, accent #B72B39)
@@ -44,10 +45,12 @@ data/                   Generated JSON (committed by the Action)
   teams.json            Manifest: default team + switcher labels
   <teamId>/schedule.json
   <teamId>/standings.json
+  <teamId>/stats.json
 scripts/
   build-teams.mjs       Writes data/teams.json from config
   fetch-schedule.mjs    Schedule/results scraper (all teams)
   fetch-standings.mjs   Standings scraper (all teams)
+  fetch-stats.mjs       Team Leaders scraper (all teams)
   serve.mjs             Local static preview server
   lib/                  Shared config (teams list) + fetch/parse helpers
 .github/workflows/
