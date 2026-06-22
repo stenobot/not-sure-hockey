@@ -324,10 +324,11 @@ em { font-style: normal; color: var(--red); }
   .sched-cols { grid-template-columns: 1fr; }
 }
 @media (max-width: 560px) {
-  .nav { display: none; }
+  .cal-btn { display: none; }
   .hide-sm { display: none; }
   .brand__name { font-size: 1.25rem; }
-  .site-header { gap: 0.6rem; }
-  .cal-btn { margin-left: auto; }
+  .site-header { flex-wrap: wrap; gap: 0.45rem 0.7rem; }
+  .nav { margin-left: 0; gap: 1.1rem; }
+  .nav a { font-size: 0.78rem; letter-spacing: 0.1em; }
   .team-switch__select { font-size: 0.85rem; padding: 0.3rem 1.8rem 0.3rem 0.55rem; min-width: 0; }
 }
