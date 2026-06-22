@@ -1,15 +1,14 @@
 name: Update schedule data
 
+# NOTE: The league site (Cloudflare) blocks GitHub-hosted runners' datacenter
+# IPs with HTTP 403, so the scrape cannot run on github-hosted runners. The
+# scheduled/auto triggers are disabled to avoid constant failures. Refresh data
+# from a residential network instead (see README "Keeping data fresh"):
+#   - run `npm run fetch:all` locally and commit, or
+#   - register a self-hosted runner on an always-on home machine, change
+#     `runs-on` below to `self-hosted`, and re-enable the `schedule` trigger.
 on:
-  schedule:
-    # Every 6 hours (UTC). Refreshes schedule and standings JSON.
-    - cron: '0 */6 * * *'
   workflow_dispatch: {}
-  push:
-    branches: [main]
-    paths:
-      - 'scripts/**'
-      - '.github/workflows/update-data.yml'
 
 permissions:
   contents: write

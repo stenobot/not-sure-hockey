@@ -51,6 +51,31 @@ scripts/
   serve.mjs             Local static preview server
   lib/                  Shared config (teams list) + fetch/parse helpers
 .github/workflows/
-  update-data.yml       Scheduled data refresh + commit
+  update-data.yml       Manual data refresh + commit (see "Keeping data fresh")
   deploy.yml            Deploy to GitHub Pages
 ```
+
+## Keeping data fresh
+
+The data scrapers must run from a **residential network**. The Kraken Hockey
+League site is behind Cloudflare, which returns **HTTP 403** to GitHub-hosted
+Actions runners (datacenter IPs) regardless of headers/User-Agent — so the
+refresh can't run on the default GitHub runners. Choose one of:
+
+**A. Manual (simplest).** From a normal machine/network:
+```bash
+npm run fetch:all
+git commit -am "Refresh league data" && git push
+```
+Pushing triggers the Pages deploy, so the live site updates.
+
+**B. Local scheduled task.** Run the two commands above on a schedule (e.g.
+Windows Task Scheduler or cron) on an always-on home machine.
+
+**C. Self-hosted runner.** Register a [self-hosted runner](https://docs.github.com/en/actions/hosting-your-own-runners)
+on an always-on home machine, change `runs-on:` in `update-data.yml` to
+`self-hosted`, and re-add a `schedule:` trigger. Then it runs automatically from
+your residential IP.
+
+> The static site (`deploy.yml`) deploys fine on GitHub-hosted runners — only the
+> scrapers need a residential IP.
