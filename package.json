@@ -9,10 +9,16 @@
     "fetch:schedule": "node scripts/fetch-schedule.mjs",
     "fetch:standings": "node scripts/fetch-standings.mjs",
     "fetch:stats": "node scripts/fetch-stats.mjs",
-    "fetch:all": "npm run build:teams && npm run fetch:schedule && npm run fetch:standings && npm run fetch:stats",
+    "fetch:attendance": "node scripts/fetch-attendance.mjs",
+    "benchapp:login": "node scripts/fetch-attendance.mjs --login",
+    "benchapp:debug": "node scripts/fetch-attendance.mjs --debug",
+    "fetch:all": "npm run build:teams && npm run fetch:schedule && npm run fetch:standings && npm run fetch:stats && npm run fetch:attendance",
     "serve": "node scripts/serve.mjs"
   },
   "dependencies": {
     "cheerio": "^1.0.0"
+  },
+  "devDependencies": {
+    "playwright": "^1.49.0"
   }
 }

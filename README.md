@@ -27,6 +27,7 @@ issues with the league site and keeps the page fast.
 | Schedule & results | `https://krakenhockeyleague.com/team/<teamId>/schedule` |
 | Standings | `https://krakenhockeyleague.com/standings` (division auto‑detected per team) |
 | Team leaders | `https://krakenhockeyleague.com/team/<teamId>/home` (Team Leaders section) |
+| Next-game IN/OUT | **BenchApp** (private; Division 6 only — see "BenchApp attendance" below) |
 | Calendar subscribe | `webcal://krakenhockeyleague.com/ical/<teamId>` |
 
 Teams are configured in `scripts/lib/config.mjs` — adding another is a one‑line change there.
@@ -46,11 +47,13 @@ data/                   Generated JSON (committed by the Action)
   <teamId>/schedule.json
   <teamId>/standings.json
   <teamId>/stats.json
+  <teamId>/attendance.json   Next-game IN/OUT counts (BenchApp; Div 6 only)
 scripts/
   build-teams.mjs       Writes data/teams.json from config
   fetch-schedule.mjs    Schedule/results scraper (all teams)
   fetch-standings.mjs   Standings scraper (all teams)
   fetch-stats.mjs       Team Leaders scraper (all teams)
+  fetch-attendance.mjs  BenchApp IN/OUT scraper (credentialed, local only)
   serve.mjs             Local static preview server
   lib/                  Shared config (teams list) + fetch/parse helpers
 .github/workflows/
@@ -68,3 +71,35 @@ runners. The static site (`deploy.yml`) deploys fine on GitHub-hosted runners.
 
 > Contributor/Copilot setup, conventions, and the full refresh/deploy flow are
 > documented in [`.github/copilot-instructions.md`](.github/copilot-instructions.md).
+
+## BenchApp attendance (Division 6 only)
+
+The Next Game ticket shows the upcoming game's **IN / OUT** counts for the
+Division 6 team, scraped from the team's private **BenchApp** account. Because
+that data requires a login, `fetch-attendance.mjs` runs a real browser
+(Playwright + **Firefox**, your default browser) **locally**. You sign in once;
+it saves the login as a Playwright **storageState** file and reuses that on
+later runs — credentials never leave your machine and the committed
+`attendance.json` holds only aggregate counts (no names).
+
+One-time setup:
+
+1. `npm install` (pulls in Playwright), then install the browser once:
+   `npx playwright install firefox`.
+2. Run `npm run benchapp:login` — a Firefox window opens. Sign in and complete any
+   verification. It waits until it confirms you're logged in (up to 4 min), then
+   saves the session to `.benchapp-session/state.json` (gitignored). The window
+   then closes on its own.
+3. *(Optional)* For unattended re-login when the session expires, provide
+   credentials as env vars (`BENCHAPP_EMAIL`, `BENCHAPP_PASSWORD`) or by copying
+   `.benchapp.local.example.json` → `.benchapp.local.json` (both gitignored).
+   Without them, just re-run `npm run benchapp:login` when the session expires.
+
+After that, `npm run fetch:attendance` (included in `fetch:all`) reuses the saved
+session. It opens a **visible Firefox window** by default — headless Firefox trips
+BenchApp's Cloudflare challenge, while a real window + the saved session passes
+silently (set `BENCHAPP_HEADLESS=1` to force headless). If the session is
+missing/expired or a challenge doesn't clear, the scraper **warns and keeps the
+last-good** `attendance.json` rather than failing, so a BenchApp hiccup never
+blocks a normal data deploy. Use `--debug` to dump a screenshot + HTML when
+tuning selectors.

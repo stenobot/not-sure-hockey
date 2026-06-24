@@ -1,0 +1,330 @@
+// Local, credentialed scraper for the Division 6 team's BenchApp attendance.
+// Reads the NEXT upcoming game's IN / OUT counts and writes them to
+// data/<teamId>/attendance.json for the site's "Next Game" ticket.
+//
+// This is the ONLY scraper that needs credentials, so unlike the league
+// scrapers it runs a real browser (Playwright + Firefox) with a persisted
+// session. It is designed to look like an ordinary member checking their team:
+//   - log in once (`npm run benchapp:login`), then reuse the saved session
+//   - Firefox with consistent locale/timezone/viewport
+//   - one gentle, sequential navigation; small randomized delays
+//   - run only when there is an upcoming game
+//   - on any block/challenge, abort and KEEP the last-good JSON
+//
+// SECURITY: credentials + session are gitignored and local only. The committed
+// output holds aggregate counts only (no names / PII).
+
+import { firefox } from 'playwright';
+import { access } from 'node:fs/promises';
+import readline from 'node:readline';
+import { teams } from './lib/config.mjs';
+import { writeJson, nowIso } from './lib/parse.mjs';
+import {
+  SESSION_FILE,
+  ensureSessionDir,
+  BROWSER_CONTEXT,
+  loadCredentials,
+  humanDelay,
+} from './lib/benchapp.mjs';
+
+const LOGIN_MODE = process.argv.includes('--login');
+const DEBUG = process.argv.includes('--debug') || !!process.env.BENCHAPP_DEBUG;
+// Run with a visible browser by default: headless Firefox trips Cloudflare's
+// "Just a moment…" challenge, whereas a real window + the saved session passes
+// silently. Set BENCHAPP_HEADLESS=1 to force headless (may get challenged).
+const HEADED = LOGIN_MODE || !process.env.BENCHAPP_HEADLESS;
+
+const LOGIN_URL = 'https://www.benchapp.com/';
+
+const fileExists = (p) => access(p).then(() => true).catch(() => false);
+
+// BenchApp's authenticated markup isn't publicly visible, so the parsers below
+// (findNextGame / parseAttendance) are tuned against the live logged-in view and
+// have heuristic fallbacks. With --debug they dump a screenshot + HTML to
+// scripts/.benchapp-debug-*.{png,html} to make tuning easy.
+
+// Detect a REAL Cloudflare/verification interstitial — not just any page that
+// happens to reference Cloudflare (the authenticated app does, via CDN/tokens).
+// Check the title and known challenge containers instead of scanning all HTML.
+async function isChallenge(page) {
+  const title = (await page.title().catch(() => '')).toLowerCase();
+  if (/just a moment|attention required|checking your browser|access denied/.test(title)) {
+    return true;
+  }
+  const sel = '#challenge-form, #cf-challenge-running, #challenge-running, .cf-browser-verification, #cf-please-wait';
+  return (await page.locator(sel).count().catch(() => 0)) > 0;
+}
+
+// Cloudflare's JS challenge usually clears itself in a few seconds (especially
+// headed). Poll until the challenge is gone, or give up after maxMs.
+async function waitOutChallenge(page, maxMs = 25000) {
+  const start = Date.now();
+  while (Date.now() - start < maxMs) {
+    if (!(await isChallenge(page))) return true;
+    await page.waitForTimeout(2500);
+  }
+  return !(await isChallenge(page));
+}
+
+// Read the displayed game's date from the deep-link detail page. The page lands
+// on the next upcoming game and shows an uppercase header like "SUN, JUN 28"
+// followed by "5:35 PM - 6:50 PM". Returns { date, datetime, label } or null.
+async function getDisplayedGame(page) {
+  return page.evaluate(() => {
+    const MON = { JAN: '01', FEB: '02', MAR: '03', APR: '04', MAY: '05', JUN: '06',
+      JUL: '07', AUG: '08', SEP: '09', OCT: '10', NOV: '11', DEC: '12' };
+    const leaves = Array.from(document.querySelectorAll('div,span,h1,h2,h3,h4,p'))
+      .filter((d) => d.children.length === 0);
+
+    const hdr = leaves.find((d) => /^[A-Z]{3},\s*[A-Z]{3}\s+\d{1,2}$/.test(d.textContent.trim()));
+    if (!hdr) return null;
+    const m = hdr.textContent.trim().match(/^([A-Z]{3}),\s*([A-Z]{3})\s+(\d{1,2})$/);
+    const mon = m && MON[m[2]];
+    if (!mon) return null;
+    const day = String(+m[3]).padStart(2, '0');
+
+    // Infer the year (header has none): current year, +1 if it lands far in the
+    // past (handles a Dec→Jan season rollover).
+    const now = new Date();
+    let year = now.getFullYear();
+    let date = `${year}-${mon}-${day}`;
+    if (now - new Date(`${date}T00:00`) > 1000 * 60 * 60 * 24 * 60) {
+      year += 1;
+      date = `${year}-${mon}-${day}`;
+    }
+
+    let datetime = `${date}T00:00`;
+    const timeLeaf = leaves.find((d) => /^\d{1,2}:\d{2}\s*(AM|PM)\s*-/i.test(d.textContent.trim()));
+    const tm = timeLeaf && timeLeaf.textContent.trim().match(/^(\d{1,2}):(\d{2})\s*(AM|PM)/i);
+    if (tm) {
+      let h = +tm[1];
+      const ap = tm[3].toUpperCase();
+      if (ap === 'PM' && h !== 12) h += 12;
+      if (ap === 'AM' && h === 12) h = 0;
+      datetime = `${date}T${String(h).padStart(2, '0')}:${tm[2]}`;
+    }
+    return { date, datetime, label: hdr.textContent.trim() };
+  });
+}
+
+// Parse the next game's IN / OUT counts from the deep-link game page. BenchApp
+// shows an "In N / Out N / Unknown N" summary where each is a label div followed
+// by a number div; we key off the visible "In"/"Out" label text (the CSS classes
+// are obfuscated). Returns { in, out } with null when a side can't be found.
+async function parseAttendance(page) {
+  return page.evaluate(() => {
+    const result = { in: null, out: null };
+    const leaves = Array.from(document.querySelectorAll('div')).filter((d) => d.children.length === 0);
+    for (const [key, label] of [['in', 'In'], ['out', 'Out']]) {
+      const el = leaves.find((d) => d.textContent.trim() === label);
+      if (!el || !el.parentElement) continue;
+      // The label's container reads e.g. "In3" — pull the number after the label.
+      const combined = el.parentElement.textContent.replace(/\s+/g, '');
+      const m = combined.match(new RegExp('^' + label + '(\\d+)'));
+      if (m) { result[key] = parseInt(m[1], 10); continue; }
+      const sib = el.nextElementSibling;
+      if (sib) {
+        const n = parseInt(sib.textContent.trim(), 10);
+        if (!Number.isNaN(n)) result[key] = n;
+      }
+    }
+    return result;
+  });
+}
+
+async function dumpDebug(page, tag) {
+  if (!DEBUG) return;
+  try {
+    await page.screenshot({ path: `scripts/.benchapp-debug-${tag}.png`, fullPage: true });
+    const html = await page.content();
+    await (await import('node:fs/promises')).writeFile(`scripts/.benchapp-debug-${tag}.html`, html, 'utf8');
+    console.warn(`[benchapp] wrote debug artifacts for "${tag}".`);
+  } catch (e) {
+    console.warn('[benchapp] debug dump failed:', e.message);
+  }
+}
+
+async function attemptLogin(page, creds) {
+  await page.goto(LOGIN_URL, { waitUntil: 'domcontentloaded' });
+  await humanDelay();
+  // Open the login form if it's behind a "Log In" control.
+  const loginTrigger = page.locator('a:has-text("Log In"), button:has-text("Log In")').first();
+  if (await loginTrigger.count()) { await loginTrigger.click().catch(() => {}); await humanDelay(); }
+
+  const email = page.locator('input[type="email"], input[name*="email" i], input[name="username"]').first();
+  const pass = page.locator('input[type="password"]').first();
+  if (!(await email.count()) || !(await pass.count())) {
+    await dumpDebug(page, 'login-form');
+    throw new Error('Login form not found (BenchApp markup may have changed).');
+  }
+  await email.fill(creds.email);
+  await humanDelay(200, 600);
+  await pass.fill(creds.password);
+  await humanDelay(200, 600);
+  await Promise.all([
+    page.waitForLoadState('networkidle').catch(() => {}),
+    page.locator('button[type="submit"], button:has-text("Log In"), input[type="submit"]').first().click().catch(() => {}),
+  ]);
+  await humanDelay(800, 1500);
+}
+
+// Resolve once the user presses Enter in the terminal.
+function waitForEnter(promptMsg) {
+  return new Promise((resolve) => {
+    const rl = readline.createInterface({ input: process.stdin, output: process.stdout });
+    rl.question(promptMsg, () => { rl.close(); resolve(); });
+  });
+}
+
+async function runLogin(team) {
+  await ensureSessionDir();
+  const browser = await firefox.launch({ headless: false });
+  const context = await browser.newContext(BROWSER_CONTEXT);
+  const page = await context.newPage();
+  try {
+    await page.goto(LOGIN_URL, { waitUntil: 'domcontentloaded' }).catch(() => {});
+    // Reveal the login form so it's obvious where to sign in.
+    const trigger = page.locator('a:has-text("Log In"), button:has-text("Log In")').first();
+    if (await trigger.count()) await trigger.click().catch(() => {});
+
+    console.log('\n[benchapp] A Firefox window is open. Log in to BenchApp there ' +
+      '(complete any verification).');
+    await waitForEnter('[benchapp] When you are logged in, come back here and press Enter… ');
+
+    // Trust the login you just completed; save based on cookies (the schedule
+    // deep link is a client-routed SPA and can't be used to verify directly).
+    const cookies = await context.cookies();
+    const session = cookies.filter((c) => /benchapp/i.test(c.domain) && c.value && c.value.length > 8);
+    if (!session.length) {
+      console.warn('[benchapp] no BenchApp cookies found — it does not look like ' +
+        'login completed. Session NOT saved; run `npm run benchapp:login` again.');
+      return;
+    }
+    await context.storageState({ path: SESSION_FILE });
+    console.log(`[benchapp] login captured (${session.length} BenchApp cookies); ` +
+      'session saved to .benchapp-session/state.json.');
+  } finally {
+    await browser.close();
+  }
+}
+
+async function run() {
+  const team = teams.find((t) => t.benchApp);
+  if (!team) {
+    console.log('[benchapp] no team has a benchApp config; nothing to do.');
+    return;
+  }
+
+  if (LOGIN_MODE) {
+    await runLogin(team);
+    return;
+  }
+
+  if (!(await fileExists(SESSION_FILE))) {
+    console.warn('[benchapp] no saved session; run `npm run benchapp:login` once. ' +
+      'Skipping; keeping last-good data.');
+    return;
+  }
+
+  const creds = await loadCredentials();
+  const browser = await firefox.launch({ headless: !HEADED });
+  const context = await browser.newContext({ storageState: SESSION_FILE, ...BROWSER_CONTEXT });
+  const page = await context.newPage();
+
+  try {
+    // Load the app shell first, then the schedule deep link (BenchApp is a
+    // client-routed SPA, so warming the base helps the route resolve).
+    await page.goto(LOGIN_URL, { waitUntil: 'domcontentloaded' }).catch(() => {});
+    await humanDelay();
+    await page.goto(team.benchApp.scheduleUrl, { waitUntil: 'networkidle' });
+    await humanDelay();
+
+    if (await isChallenge(page)) {
+      console.log('[benchapp] Cloudflare challenge shown; waiting for it to clear…');
+      if (!(await waitOutChallenge(page))) {
+        await dumpDebug(page, 'challenge');
+        console.warn('[benchapp] challenge did not clear; aborting and keeping last-good data. ' +
+          '(Try again, or run headed — it now runs headed by default.)');
+        return;
+      }
+      await humanDelay();
+    }
+
+    // Expired-session detection: a visible password field means a login wall.
+    if (await page.locator('input[type="password"]').count()) {
+      if (!creds) {
+        console.warn('[benchapp] saved session expired; run `npm run benchapp:login` again. Keeping last-good data.');
+        return;
+      }
+      console.log('[benchapp] saved session expired; logging in…');
+      await attemptLogin(page, creds);
+      await page.goto(team.benchApp.scheduleUrl, { waitUntil: 'networkidle' });
+      await humanDelay();
+      if (await page.locator('input[type="password"]').count()) {
+        await dumpDebug(page, 'login-failed');
+        console.warn('[benchapp] still not logged in after attempt; keeping last-good data.');
+        return;
+      }
+      await context.storageState({ path: SESSION_FILE });
+    }
+
+    // Let the SPA finish rendering the schedule before reading it.
+    await page.waitForLoadState('networkidle').catch(() => {});
+    await page.waitForTimeout(5000);
+
+    // First authenticated runs: dump the schedule page + diagnostics so the
+    // parsing selectors can be finalized against the real logged-in markup.
+    if (DEBUG) {
+      await dumpDebug(page, 'schedule');
+      const diag = await page.evaluate(() => ({
+        url: location.href,
+        htmlLen: document.documentElement.outerHTML.length,
+        scheduleLinks: document.querySelectorAll('a[href*="/schedule/"]').length,
+        gameLinks: document.querySelectorAll('a[href*="/game/"]').length,
+        bodyText: (document.body.innerText || '').replace(/\s+/g, ' ').slice(0, 300),
+      }));
+      console.log('[benchapp] schedule diagnostics:', JSON.stringify(diag));
+    }
+
+    // The deep link lands on the next game and shows its In/Out summary, so we
+    // parse this page directly (no navigation to a separate, slow-loading view).
+    const game = await getDisplayedGame(page);
+    const { in: inCount, out: outCount } = await parseAttendance(page);
+    if (!game || (inCount == null && outCount == null)) {
+      await dumpDebug(page, 'attendance');
+    }
+    if (inCount == null && outCount == null) {
+      console.warn('[benchapp] could not read IN/OUT for the next game ' +
+        '(run `npm run benchapp:debug` and share scripts/.benchapp-debug-attendance.html). Keeping last-good data.');
+      return;
+    }
+
+    const payload = {
+      team: team.name,
+      teamId: team.id,
+      gameId: null,
+      date: game ? game.date : null,
+      datetime: game ? game.datetime : null,
+      in: inCount,
+      out: outCount,
+      source: team.benchApp.scheduleUrl,
+      updated: nowIso(),
+    };
+
+    await writeJson(
+      `${team.id}/attendance.json`,
+      payload,
+      (d) => d.in == null && d.out == null
+    );
+    console.log(`[benchapp] ${team.id} next game ${(game && game.date) || '?'}: ` +
+      `${inCount ?? '?'} IN / ${outCount ?? '?'} OUT.`);
+  } finally {
+    await browser.close();
+  }
+}
+
+run().catch((err) => {
+  // Never hard-fail the broader fetch:all pipeline on a BenchApp hiccup.
+  console.warn('[benchapp] error; keeping last-good data:', err.message);
+  process.exitCode = 0;
+});

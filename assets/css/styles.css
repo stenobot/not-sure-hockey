@@ -8,6 +8,7 @@
   --amber-soft: #fcd58a;
   --red:        #b72b39;
   --red-deep:   #8a1f2a;
+  --green:      #2f7d4f;
   --ink:        #1d1408;   /* warm near-black */
   --ink-soft:   #3a2c16;
   --cream:      #fbefd6;
@@ -228,6 +229,27 @@ em { font-style: normal; color: var(--red); }
   border: 2px solid var(--ink); padding: 0.2rem 0.6rem;
   font-weight: 700; font-size: 0.8rem; letter-spacing: 0.05em;
 }
+.ticket__rsvp {
+  margin-top: 0.8rem; display: flex; justify-content: center; gap: 2rem;
+  font-family: var(--font-display); letter-spacing: 0.05em; text-transform: uppercase;
+}
+.ticket__rsvp .rsvp {
+  display: inline-flex; align-items: baseline; gap: 0.35rem;
+  font-size: 1rem; color: var(--ink-soft);
+}
+.ticket__rsvp .rsvp__num { font-size: 2.4rem; line-height: 1; }
+.ticket__rsvp .rsvp--in .rsvp__num { color: var(--green); }
+.ticket__rsvp .rsvp--out .rsvp__num { color: var(--red); }
+.ticket__links {
+  margin-top: 0.9rem; display: flex; justify-content: center; gap: 1rem;
+  font-family: var(--font-mono); font-size: 0.75rem; font-weight: 600;
+  text-transform: uppercase; letter-spacing: 0.08em;
+}
+.ticket__links a {
+  color: var(--red); border-bottom: 2px solid transparent; padding-bottom: 1px;
+  transition: color 0.15s ease, border-color 0.15s ease;
+}
+.ticket__links a:hover { color: var(--ink); border-color: var(--amber); }
 
 /* =========================================================
    Sections

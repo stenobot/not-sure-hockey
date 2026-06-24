@@ -57,7 +57,7 @@ function fmtUpdated(iso) {
 }
 
 /* ---------- hero ---------- */
-function renderHero(schedule, standings) {
+function renderHero(schedule, standings, attendance) {
   const now = pacificNowStr();
   const ours = (standings.standings || []).find((r) => r.isOurTeam);
 
@@ -83,6 +83,29 @@ function renderHero(schedule, standings) {
     return;
   }
   const count = dayCountdown(next.datetime, now);
+  // BenchApp IN/OUT, only when it matches the game shown (matched by date,
+  // since the count comes from a different source than the league schedule).
+  let rsvp = '';
+  const benchAppMatches = attendance && attendance.date && next.date &&
+    attendance.date === next.date;
+  if (benchAppMatches && (attendance.in != null || attendance.out != null)) {
+    rsvp = `
+      <p class="ticket__rsvp">
+        <span class="rsvp rsvp--in"><span class="rsvp__num">${escape(attendance.in ?? 0)}</span> IN</span>
+        <span class="rsvp rsvp--out"><span class="rsvp__num">${escape(attendance.out ?? 0)}</span> OUT</span>
+      </p>`;
+  }
+
+  // Source links: KHL game page, and the BenchApp schedule (Div 6 only).
+  const links = [];
+  if (next.gameUrl) {
+    links.push(`<a href="${escape(next.gameUrl)}" target="_blank" rel="noopener">KHL</a>`);
+  }
+  if (attendance && attendance.source) {
+    links.push(`<a href="${escape(attendance.source)}" target="_blank" rel="noopener">BenchApp</a>`);
+  }
+  const linksHtml = links.length ? `<p class="ticket__links">${links.join('')}</p>` : '';
+
   body.innerHTML = `
     <div class="ticket__matchup">
       <span class="ticket__ha">${escape(next.homeAway === 'HOME' ? 'vs' : '@')}</span>
@@ -90,7 +113,9 @@ function renderHero(schedule, standings) {
     </div>
     <p class="ticket__when">${escape(next.dateLabel || '')}${next.time ? ' · ' + escape(next.time) : ''}</p>
     <p class="ticket__where">${escape(next.arena || '')}</p>
-    ${count ? `<span class="ticket__count">${escape(count)}</span>` : ''}`;
+    ${rsvp}
+    ${count ? `<span class="ticket__count">${escape(count)}</span>` : ''}
+    ${linksHtml}`;
 }
 
 /* ---------- schedule ---------- */
@@ -199,13 +224,14 @@ function renderStats(stats, season) {
 
 /* ---------- team switching ---------- */
 async function loadTeam(teamId) {
-  const [schedule, standings, stats] = await Promise.all([
+  const [schedule, standings, stats, attendance] = await Promise.all([
     loadJson(teamData(teamId, 'schedule')).catch(() => ({ games: [] })),
     loadJson(teamData(teamId, 'standings')).catch(() => ({ standings: [], division: null })),
     loadJson(teamData(teamId, 'stats')).catch(() => ({ categories: [] })),
+    loadJson(teamData(teamId, 'attendance')).catch(() => null),
   ]);
 
-  renderHero(schedule, standings);
+  renderHero(schedule, standings, attendance);
   renderSchedule(schedule);
   renderStandings(standings, schedule.season);
   renderStats(stats, schedule.season);
