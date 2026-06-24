@@ -3,7 +3,7 @@
   "teamId": "9572",
   "season": "Summer 2026",
   "source": "https://krakenhockeyleague.com/team/9572/schedule",
-  "updated": "2026-06-22T14:56:16.365Z",
+  "updated": "2026-06-24T00:22:48.394Z",
   "games": [
     {
       "num": 1,
@@ -156,6 +156,25 @@
       "status": "Preview",
       "gameId": "56082",
       "gameUrl": "https://krakenhockeyleague.com/game/56082/preview"
+    },
+    {
+      "num": 9,
+      "date": "2026-07-07",
+      "dateLabel": "Tue, Jul 7",
+      "time": "10:00 PM",
+      "datetime": "2026-07-07T22:00",
+      "arena": "OVA",
+      "arenaUrl": "https://krakenhockeyleague.com/arena/13",
+      "homeAway": "HOME",
+      "opponent": "WKUTP-5",
+      "opponentUrl": "https://krakenhockeyleague.com/team/674/home",
+      "result": null,
+      "score": null,
+      "teamScore": null,
+      "oppScore": null,
+      "status": "Preview",
+      "gameId": "56148",
+      "gameUrl": "https://krakenhockeyleague.com/game/56148/preview"
     }
   ]
 }
