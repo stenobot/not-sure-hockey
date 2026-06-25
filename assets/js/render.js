@@ -243,11 +243,28 @@ async function loadTeam(teamId) {
 }
 
 // Point the calendar subscribe links at the currently selected team.
+// Apple devices handle webcal:// natively (Apple Calendar); other platforms
+// (notably Android) often have no webcal handler, so route them through
+// Google Calendar's "add by URL" subscribe page instead.
 function updateCalendarLinks(teamId) {
-  const href = `webcal://krakenhockeyleague.com/ical/${teamId}`;
+  const webcal = `webcal://krakenhockeyleague.com/ical/${teamId}`;
+  const ua = navigator.userAgent || '';
+  const isApple = /iPad|iPhone|iPod|Macintosh|Mac OS X/.test(ua) ||
+    (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  const href = isApple
+    ? webcal
+    : `https://calendar.google.com/calendar/r?cid=${encodeURIComponent(webcal)}`;
   for (const sel of ['#cal-btn', '#cal-btn-menu']) {
     const node = el(sel);
-    if (node) node.setAttribute('href', href);
+    if (!node) continue;
+    node.setAttribute('href', href);
+    if (!isApple) {
+      node.setAttribute('target', '_blank');
+      node.setAttribute('rel', 'noopener');
+    } else {
+      node.removeAttribute('target');
+      node.removeAttribute('rel');
+    }
   }
 }
 

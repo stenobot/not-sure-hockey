@@ -31,8 +31,21 @@
       <a href="#standings">Standings</a>
       <a href="#stats">Stats</a>
     </nav>
-    <a class="cal-btn" id="cal-btn" href="webcal://krakenhockeyleague.com/ical/13343" title="Subscribe to the schedule">
-      <span class="cal-btn__plus">+</span> Calendar
+    <a class="cal-btn" id="cal-btn" href="webcal://krakenhockeyleague.com/ical/13343" title="Subscribe to the schedule" aria-label="Subscribe to the schedule">
+      <span class="cal-btn__plus">+</span>
+      <svg class="cal-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="3" y="4" width="18" height="18" rx="2" ry="2" />
+        <line x1="16" y1="2" x2="16" y2="6" />
+        <line x1="8" y1="2" x2="8" y2="6" />
+        <line x1="3" y1="10" x2="21" y2="10" />
+      </svg>
+    </a>
+    <a class="cal-btn cal-btn--icon" id="ig-btn" href="https://www.instagram.com/notsurehc/" target="_blank" rel="noopener" title="Instagram" aria-label="Instagram">
+      <svg class="cal-btn__icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5" />
+        <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z" />
+        <line x1="17.5" y1="6.5" x2="17.51" y2="6.5" />
+      </svg>
     </a>
     <div class="menu">
       <button class="menu__toggle" id="menu-toggle" aria-expanded="false" aria-controls="menu-panel" aria-label="Open menu">
@@ -44,6 +57,14 @@
         <a href="#stats">Stats</a>
         <a class="menu__cal" id="cal-btn-menu" href="webcal://krakenhockeyleague.com/ical/13343">
           <span class="cal-btn__plus">+</span> Calendar
+        </a>
+        <a class="menu__ext" href="https://www.instagram.com/notsurehc/" target="_blank" rel="noopener">
+          <svg class="menu__ext-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+            <polyline points="15 3 21 3 21 9" />
+            <line x1="10" y1="14" x2="21" y2="3" />
+          </svg>
+          Instagram
         </a>
       </div>
     </div>
@@ -151,8 +172,10 @@
       <div>
         <p class="site-footer__name">Not Sure · Kraken Hockey League</p>
         <p class="site-footer__meta">
-          Live data from the
-          <a href="https://krakenhockeyleague.com/team/13343/schedule" target="_blank" rel="noopener">league site</a>.
+          Data from
+          <a href="https://krakenhockeyleague.com/team/13343/schedule" target="_blank" rel="noopener">KHL site</a>
+          and
+          <a href="https://www.benchapp.com" target="_blank" rel="noopener">BenchApp</a>.
           Last updated <span id="last-updated">—</span>.
         </p>
       </div>

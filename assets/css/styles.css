@@ -117,6 +117,8 @@ em { font-style: normal; color: var(--red); }
 }
 .cal-btn:hover { background: var(--amber); color: var(--ink); transform: translateY(-2px); }
 .cal-btn__plus { font-family: var(--font-display); font-size: 1.1rem; line-height: 0.6; }
+.cal-btn__icon { width: 18px; height: 18px; display: block; }
+.cal-btn--icon { padding: 0.5rem; }
 
 /* Overflow menu (shown on narrow screens) */
 .menu { position: relative; display: none; }
@@ -152,8 +154,10 @@ em { font-style: normal; color: var(--red); }
   padding: 0.6rem 0.7rem; border-radius: 2px;
 }
 .menu__panel a:hover { background: var(--red); color: var(--cream); }
-.menu__cal { color: var(--amber) !important; }
+.menu__cal { color: var(--cream) !important; }
 .menu__cal:hover { background: var(--red); color: var(--cream) !important; }
+.menu__ext { display: inline-flex; align-items: center; gap: 0.5rem; }
+.menu__ext-icon { width: 15px; height: 15px; flex-shrink: 0; }
 
 /* =========================================================
    Hero
