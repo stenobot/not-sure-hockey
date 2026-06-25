@@ -400,7 +400,12 @@ em { font-style: normal; color: var(--red); }
   max-width: var(--maxw); margin: 0 auto; padding: 2rem clamp(1rem, 4vw, 2.4rem);
   display: flex; align-items: center; gap: 1.2rem;
 }
-.site-footer__name { font-family: var(--font-display); text-transform: uppercase; font-size: 1.3rem; color: var(--amber); letter-spacing: 0.04em; }
+.site-footer__links { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.5rem; }
+.site-footer__links a {
+  font-weight: 700; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--amber); text-decoration: none;
+}
+.site-footer__links a:hover { color: var(--cream); text-decoration: underline; }
 .site-footer__meta { font-size: 0.85rem; color: var(--amber-soft); }
 .site-footer__meta a { color: var(--cream); text-decoration: underline; }
 
