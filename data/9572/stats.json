@@ -3,26 +3,26 @@
   "teamId": "9572",
   "season": "Summer 2026",
   "source": "https://krakenhockeyleague.com/team/9572/home",
-  "updated": "2026-06-24T00:22:52.191Z",
+  "updated": "2026-06-25T03:05:46.535Z",
   "categories": [
     {
       "key": "goals",
       "label": "Goals",
       "leaders": [
         {
+          "number": "17",
+          "name": "Colin McNally",
+          "value": "4"
+        },
+        {
           "number": "93",
           "name": "Matt Mrozinski",
-          "value": "3"
+          "value": "4"
         },
         {
-          "number": "86",
-          "name": "Ben Daniel",
-          "value": "3"
-        },
-        {
-          "number": "29",
-          "name": "Nate Tarampi",
-          "value": "3"
+          "number": "27",
+          "name": "Colin Hutchinson",
+          "value": "4"
         }
       ]
     },
@@ -31,18 +31,18 @@
       "label": "Assists",
       "leaders": [
         {
-          "number": "41",
-          "name": "Bryan Chacosky",
-          "value": "5"
-        },
-        {
           "number": "17",
           "name": "Colin McNally",
           "value": "5"
         },
         {
-          "number": "7",
-          "name": "Eric Carnell",
+          "number": "41",
+          "name": "Bryan Chacosky",
+          "value": "5"
+        },
+        {
+          "number": "93",
+          "name": "Matt Mrozinski",
           "value": "3"
         }
       ]
@@ -52,19 +52,19 @@
       "label": "Points",
       "leaders": [
         {
-          "number": "41",
-          "name": "Bryan Chacosky",
-          "value": "7"
-        },
-        {
           "number": "17",
           "name": "Colin McNally",
-          "value": "6"
+          "value": "9"
         },
         {
           "number": "93",
           "name": "Matt Mrozinski",
-          "value": "4"
+          "value": "7"
+        },
+        {
+          "number": "41",
+          "name": "Bryan Chacosky",
+          "value": "7"
         }
       ]
     },
@@ -104,9 +104,9 @@
           "value": "4"
         },
         {
-          "number": "5",
-          "name": "Paul Poirier",
-          "value": "8"
+          "number": "40",
+          "name": "Matt Campbell",
+          "value": "9"
         }
       ]
     },
@@ -120,14 +120,14 @@
           "value": "86.2%"
         },
         {
+          "number": "5",
+          "name": "Paul Poirier",
+          "value": "81.3%"
+        },
+        {
           "number": "43",
           "name": "Eoghan Kyne",
           "value": "80.0%"
-        },
-        {
-          "number": "37",
-          "name": "Paul Casper",
-          "value": "76.9%"
         }
       ]
     }

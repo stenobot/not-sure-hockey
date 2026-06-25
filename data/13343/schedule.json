@@ -3,7 +3,7 @@
   "teamId": "13343",
   "season": "Summer 2026",
   "source": "https://krakenhockeyleague.com/team/13343/schedule",
-  "updated": "2026-06-24T00:22:48.065Z",
+  "updated": "2026-06-25T03:05:42.294Z",
   "games": [
     {
       "num": 1,
@@ -156,6 +156,25 @@
       "status": "Preview",
       "gameId": "56114",
       "gameUrl": "https://krakenhockeyleague.com/game/56114/preview"
+    },
+    {
+      "num": 9,
+      "date": "2026-07-12",
+      "dateLabel": "Sun, Jul 12",
+      "time": "6:30 PM",
+      "datetime": "2026-07-12T18:30",
+      "arena": "KVIC",
+      "arenaUrl": "https://krakenhockeyleague.com/arena/16",
+      "homeAway": "AWAY",
+      "opponent": "Chucklepucks",
+      "opponentUrl": "https://krakenhockeyleague.com/team/19446/home",
+      "result": null,
+      "score": null,
+      "teamScore": null,
+      "oppScore": null,
+      "status": "Preview",
+      "gameId": "56191",
+      "gameUrl": "https://krakenhockeyleague.com/game/56191/preview"
     }
   ]
 }
