@@ -400,10 +400,15 @@ em { font-style: normal; color: var(--red); }
   max-width: var(--maxw); margin: 0 auto; padding: 2rem clamp(1rem, 4vw, 2.4rem);
   display: flex; align-items: center; gap: 1.2rem;
 }
-.site-footer__links { display: flex; flex-wrap: wrap; gap: 1rem; margin-bottom: 0.5rem; }
+.site-footer__links { display: flex; flex-wrap: wrap; align-items: center; gap: 1.4rem; margin-bottom: 0.5rem; }
 .site-footer__links a {
+  position: relative;
   font-weight: 700; font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase;
   color: var(--amber); text-decoration: none;
+}
+.site-footer__links a + a::before {
+  content: '·'; position: absolute; left: -0.8rem;
+  color: var(--amber-soft); font-weight: 700;
 }
 .site-footer__links a:hover { color: var(--cream); text-decoration: underline; }
 .site-footer__meta { font-size: 0.85rem; color: var(--amber-soft); }
