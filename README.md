@@ -28,6 +28,7 @@ issues with the league site and keeps the page fast.
 | Standings | `https://krakenhockeyleague.com/standings` (division auto‑detected per team) |
 | Team leaders | `https://krakenhockeyleague.com/team/<teamId>/home` (Team Leaders section) |
 | Next-game IN/OUT | **BenchApp** (private; Division 6 only — see "BenchApp attendance" below) |
+| Roster (Junior tracker) | **BenchApp** (private; Division 6 only — see "BenchApp attendance" below) |
 | Calendar subscribe | `webcal://krakenhockeyleague.com/ical/<teamId>` |
 
 Teams are configured in `scripts/lib/config.mjs` — adding another is a one‑line change there.
@@ -36,24 +37,29 @@ Teams are configured in `scripts/lib/config.mjs` — adding another is a one‑l
 
 ```
 index.html              Single-page site (hero, schedule, standings, team leaders) + team switcher
+junior/index.html       "Junior tracker" page (/junior) — pick who has the Junior mascot
 CNAME                   Custom domain (notsurehockey.com)
 assets/
   css/styles.css        Theme (background #F8B53C, accent #B72B39)
   js/render.js          Loads data/teams.json + the selected team's JSON and renders
+  js/junior.js          Junior tracker: renders the roster, single-select + localStorage
   img/logo.svg          Team wordmark crest (hero)
   img/star.svg          Star mark (nav + favicon)
+  img/junior.jpg        Junior mascot photo (junior page)
 data/                   Generated JSON (committed by the Action)
   teams.json            Manifest: default team + switcher labels
   <teamId>/schedule.json
   <teamId>/standings.json
   <teamId>/stats.json
   <teamId>/attendance.json   Next-game IN/OUT counts (BenchApp; Div 6 only)
+  <teamId>/roster.json       Roster names for the Junior tracker (BenchApp; Div 6 only)
 scripts/
   build-teams.mjs       Writes data/teams.json from config
   fetch-schedule.mjs    Schedule/results scraper (all teams)
   fetch-standings.mjs   Standings scraper (all teams)
   fetch-stats.mjs       Team Leaders scraper (all teams)
   fetch-attendance.mjs  BenchApp IN/OUT scraper (credentialed, local only)
+  fetch-roster.mjs      BenchApp roster scraper (credentialed, local only)
   serve.mjs             Local static preview server
   lib/                  Shared config (teams list) + fetch/parse helpers
 .github/workflows/
@@ -103,3 +109,17 @@ missing/expired or a challenge doesn't clear, the scraper **warns and keeps the
 last-good** `attendance.json` rather than failing, so a BenchApp hiccup never
 blocks a normal data deploy. Use `--debug` to dump a screenshot + HTML when
 tuning selectors.
+
+### BenchApp roster (Junior tracker)
+
+`npm run fetch:roster` (also included in `fetch:all`) uses the same saved BenchApp
+session to read the Division 6 **roster** — Players, Goalies and Spares — and
+writes the members' names to `data/<teamId>/roster.json`. The `/junior` page
+("Who has Junior?") fetches that file and renders one button per member.
+
+Unlike `attendance.json`, `roster.json` **intentionally contains member names**,
+since the Junior tracker is built around the roster — a deliberate, team-approved
+exception to the "aggregate counts only" rule. It shares all of the attendance
+scraper's safeguards: it runs a visible Firefox window by default, and on a
+missing/expired session or an uncleared challenge it **warns and keeps the
+last-good** `roster.json`.

@@ -12,6 +12,8 @@ export const teams = [
     benchApp: {
       scheduleUrl:
         'https://www.benchapp.com/schedule/3455757?teamId=885515&seasonId=514831',
+      rosterUrl:
+        'https://www.benchapp.com/roster?teamId=885515&seasonId=514831',
       teamId: '885515',
       seasonId: '514831',
     },

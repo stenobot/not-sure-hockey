@@ -1,0 +1,96 @@
+{
+  "team": "Not Sure",
+  "teamId": "13343",
+  "players": [
+    {
+      "name": "Andy Myers",
+      "group": "players"
+    },
+    {
+      "name": "Blair McLachlan",
+      "group": "players"
+    },
+    {
+      "name": "Caitlin Gortze",
+      "group": "players"
+    },
+    {
+      "name": "Damien LeGault",
+      "group": "players"
+    },
+    {
+      "name": "Dane Lantz",
+      "group": "players"
+    },
+    {
+      "name": "Emily Sorg",
+      "group": "players"
+    },
+    {
+      "name": "Jesse Cutler",
+      "group": "players"
+    },
+    {
+      "name": "Jordan Oroshiba",
+      "group": "players"
+    },
+    {
+      "name": "Justin Geffrey",
+      "group": "players"
+    },
+    {
+      "name": "Phantasia Jendro",
+      "group": "players"
+    },
+    {
+      "name": "Pword Kelly",
+      "group": "players"
+    },
+    {
+      "name": "Ryan Benson",
+      "group": "players"
+    },
+    {
+      "name": "Spunky",
+      "group": "players"
+    },
+    {
+      "name": "Luis Quintana",
+      "group": "goalies"
+    },
+    {
+      "name": "Allen Lee",
+      "group": "spares"
+    },
+    {
+      "name": "Ben Savage",
+      "group": "spares"
+    },
+    {
+      "name": "Eric Carnell",
+      "group": "spares"
+    },
+    {
+      "name": "Jason Soehnlein",
+      "group": "spares"
+    },
+    {
+      "name": "Julian Myers",
+      "group": "spares"
+    },
+    {
+      "name": "Katie Lantz",
+      "group": "spares"
+    },
+    {
+      "name": "Kraig Gratiot",
+      "group": "spares"
+    },
+    {
+      "name": "Nate Tarampi",
+      "group": "spares"
+    }
+  ],
+  "source": "https://www.benchapp.com/roster?teamId=885515&seasonId=514831",
+  "updated": "2026-06-26T05:39:22.366Z"
+}
