@@ -3,7 +3,7 @@
   "teamId": "9572",
   "season": "Summer 2026",
   "source": "https://krakenhockeyleague.com/team/9572/schedule",
-  "updated": "2026-06-25T14:55:29.991Z",
+  "updated": "2026-06-26T03:32:00.773Z",
   "games": [
     {
       "num": 1,
@@ -175,6 +175,25 @@
       "status": "Preview",
       "gameId": "56148",
       "gameUrl": "https://krakenhockeyleague.com/game/56148/preview"
+    },
+    {
+      "num": 10,
+      "date": "2026-07-15",
+      "dateLabel": "Wed, Jul 15",
+      "time": "7:00 PM",
+      "datetime": "2026-07-15T19:00",
+      "arena": "KCI Star",
+      "arenaUrl": "https://krakenhockeyleague.com/arena/28",
+      "homeAway": "AWAY",
+      "opponent": "Dumpster Fire",
+      "opponentUrl": "https://krakenhockeyleague.com/team/9940/home",
+      "result": null,
+      "score": null,
+      "teamScore": null,
+      "oppScore": null,
+      "status": "Preview",
+      "gameId": "56224",
+      "gameUrl": "https://krakenhockeyleague.com/game/56224/preview"
     }
   ]
 }
