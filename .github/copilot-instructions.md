@@ -75,7 +75,7 @@ config.mjs (teams list) ─► scrapers fetch league HTML ─► parse w/ cheeri
   with `npm run fetch:all`, then commit/push.
 - Commit a data refresh as **`data/` only** — never sweep unrelated code/design
   changes into a "refresh league data" commit.
-- The **`update-and-deploy` skill** automates this exact flow (run `fetch:all`,
+- The **`scrape-data` skill** automates this exact flow (run `fetch:all`,
   stage `data/`, commit "Refresh league data", push to trigger the deploy).
   Invoking it is the user's approval to commit/push the data refresh for that
   run; it still keeps the commit limited to `data/`.
