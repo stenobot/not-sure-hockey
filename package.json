@@ -14,6 +14,8 @@
     "benchapp:login": "node scripts/fetch-attendance.mjs --login",
     "benchapp:debug": "node scripts/fetch-attendance.mjs --debug",
     "fetch:all": "npm run build:teams && npm run fetch:schedule && npm run fetch:standings && npm run fetch:stats && npm run fetch:attendance && npm run fetch:roster",
+    "set-junior": "node scripts/set-junior.mjs",
+    "set-junior:deploy": "node scripts/set-junior-deploy.mjs",
     "serve": "node scripts/serve.mjs"
   },
   "dependencies": {
