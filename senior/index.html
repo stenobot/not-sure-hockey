@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Who has Senior? — Not Sure Hockey</title>
+  <meta name="description" content="Senior tracker for the Not Sure hockey team — who has Senior right now?" />
+  <link rel="icon" type="image/svg+xml" href="../assets/img/star.svg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Schibsted+Grotesk:wght@400;500;700;900&family=Spline+Sans+Mono:wght@500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+</head>
+<body>
+  <div class="grain" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <a href="/" class="brand">
+      <img src="../assets/img/star.svg" alt="Not Sure star" class="brand__mark" />
+      <span class="brand__name">Not&nbsp;Sure</span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="/">← Back to site</a>
+    </nav>
+  </header>
+n  <main>
+    <section class="junior">
+      <h1 class="junior__title">Who has <em>Senior</em>?</h1>
+
+      <img class="junior__photo" src="../assets/img/senior.jpg"
+           alt="Senior, the mascot photo" />
+
+      <ul class="junior-list" id="junior-list" aria-label="Team members">
+        <li class="junior-status" id="junior-status">Loading roster…</li>
+      </ul>
+    </section>
+  </main>
+
+  <script src="../assets/js/senior.js" defer></script>
+</body>
+</html>
