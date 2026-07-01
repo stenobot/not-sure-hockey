@@ -39,13 +39,20 @@
   function resolveSelected(override) {
     var saved = readSaved();
     var savedTimestamp = readSavedTimestamp();
-n    if (!override || !override.name) return saved;
-n    if (saved && savedTimestamp) {
+
+    // If no override, use saved selection
+    if (!override || !override.name) return saved;
+
+    // If user has a saved selection
+    if (saved && savedTimestamp) {
+      // If user selected after override was set, use their selection
       if (new Date(savedTimestamp) > new Date(override.setAt)) {
         return saved;
       }
     }
-n    return override.name;
+
+    // Otherwise use override
+    return override.name;
   }
 
   function render(list, names, override) {
@@ -78,7 +85,8 @@
   function init() {
     var list = document.getElementById('junior-list');
     if (!list) return;
-n    Promise.all([
+
+    Promise.all([
       fetch(ROSTER_URL, { cache: 'no-cache' })
         .then(function (r) {
           if (!r.ok) throw new Error('HTTP ' + r.status);
@@ -94,7 +102,8 @@
       .then(function (results) {
         var data = results[0];
         var override = results[1];
-n        var names = (data.players || [])
+
+        var names = (data.players || [])
           .map(function (p) { return p.name; })
           .filter(Boolean)
           .sort(function (a, b) { return a.localeCompare(b); });
