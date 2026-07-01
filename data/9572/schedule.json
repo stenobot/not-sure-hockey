@@ -3,7 +3,7 @@
   "teamId": "9572",
   "season": "Summer 2026",
   "source": "https://krakenhockeyleague.com/team/9572/schedule",
-  "updated": "2026-06-30T05:08:38.258Z",
+  "updated": "2026-07-01T04:22:35.941Z",
   "games": [
     {
       "num": 1,
@@ -149,13 +149,13 @@
       "homeAway": "HOME",
       "opponent": "Dead Rabbits",
       "opponentUrl": "https://krakenhockeyleague.com/team/9273/home",
-      "result": null,
-      "score": null,
-      "teamScore": null,
-      "oppScore": null,
-      "status": "Preview",
-      "gameId": "56082",
-      "gameUrl": "https://krakenhockeyleague.com/game/56082/preview"
+      "result": "L",
+      "score": "3 - 1",
+      "teamScore": 1,
+      "oppScore": 3,
+      "status": null,
+      "gameId": null,
+      "gameUrl": null
     },
     {
       "num": 9,

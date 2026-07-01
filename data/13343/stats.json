@@ -3,7 +3,7 @@
   "teamId": "13343",
   "season": "Summer 2026",
   "source": "https://krakenhockeyleague.com/team/13343/home",
-  "updated": "2026-06-30T05:08:40.675Z",
+  "updated": "2026-07-01T04:22:39.231Z",
   "categories": [
     {
       "key": "goals",
@@ -12,7 +12,7 @@
         {
           "number": "4",
           "name": "Luis Quintana",
-          "value": "4"
+          "value": "7"
         },
         {
           "number": "87",
@@ -36,13 +36,13 @@
           "value": "4"
         },
         {
-          "number": "16",
-          "name": "Ryan Benson",
-          "value": "3"
+          "number": "23",
+          "name": "Andy Myers",
+          "value": "4"
         },
         {
-          "number": "65",
-          "name": "Blair McLaughlin",
+          "number": "4",
+          "name": "Luis Quintana",
           "value": "3"
         }
       ]
@@ -52,19 +52,19 @@
       "label": "Points",
       "leaders": [
         {
+          "number": "4",
+          "name": "Luis Quintana",
+          "value": "10"
+        },
+        {
           "number": "87",
           "name": "Justin Geffrey",
           "value": "7"
         },
         {
-          "number": "4",
-          "name": "Luis Quintana",
-          "value": "5"
-        },
-        {
-          "number": "16",
-          "name": "Ryan Benson",
-          "value": "5"
+          "number": "23",
+          "name": "Andy Myers",
+          "value": "6"
         }
       ]
     },
@@ -85,7 +85,7 @@
         {
           "number": "33",
           "name": "John Heacock",
-          "value": "1.00"
+          "value": "1.33"
         }
       ]
     },
@@ -106,7 +106,7 @@
         {
           "number": "33",
           "name": "John Heacock",
-          "value": "2"
+          "value": "4"
         }
       ]
     },
@@ -117,7 +117,7 @@
         {
           "number": "33",
           "name": "John Heacock",
-          "value": "95.0%"
+          "value": "93.5%"
         },
         {
           "number": "30",

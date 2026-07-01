@@ -3,7 +3,7 @@
   "teamId": "13343",
   "season": "Summer 2026",
   "source": "https://krakenhockeyleague.com/team/13343/schedule",
-  "updated": "2026-06-30T05:08:38.044Z",
+  "updated": "2026-07-01T04:22:35.713Z",
   "games": [
     {
       "num": 1,
@@ -115,9 +115,9 @@
       "score": "5 - 2",
       "teamScore": 5,
       "oppScore": 2,
-      "status": null,
-      "gameId": null,
-      "gameUrl": null
+      "status": "Final",
+      "gameId": "55964",
+      "gameUrl": "https://krakenhockeyleague.com/game/55964/summary"
     },
     {
       "num": 7,
