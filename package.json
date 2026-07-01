@@ -16,6 +16,8 @@
     "fetch:all": "npm run build:teams && npm run fetch:schedule && npm run fetch:standings && npm run fetch:stats && npm run fetch:attendance && npm run fetch:roster",
     "set-junior": "node scripts/set-junior.mjs",
     "set-junior:deploy": "node scripts/set-junior-deploy.mjs",
+    "set-senior": "node scripts/set-senior.mjs",
+    "set-senior:deploy": "node scripts/set-senior-deploy.mjs",
     "serve": "node scripts/serve.mjs"
   },
   "dependencies": {
