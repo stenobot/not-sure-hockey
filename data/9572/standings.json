@@ -3,7 +3,7 @@
   "teamId": "9572",
   "division": "Division 5A",
   "source": "https://krakenhockeyleague.com/standings",
-  "updated": "2026-07-01T04:22:37.568Z",
+  "updated": "2026-07-05T06:30:52.901Z",
   "standings": [
     {
       "teamId": "674",
@@ -22,7 +22,7 @@
       "gfa": 3.63,
       "ga": 20,
       "gaa": 2.5,
-      "pim": 22
+      "pim": 24
     },
     {
       "teamId": "9940",
@@ -60,7 +60,7 @@
       "gfa": 3.5,
       "ga": 36,
       "gaa": 4.5,
-      "pim": 44
+      "pim": 50
     },
     {
       "teamId": "9273",

@@ -3,7 +3,7 @@
   "teamId": "9572",
   "season": "Summer 2026",
   "source": "https://krakenhockeyleague.com/team/9572/home",
-  "updated": "2026-07-01T04:22:39.559Z",
+  "updated": "2026-07-05T06:30:55.291Z",
   "categories": [
     {
       "key": "goals",
@@ -33,7 +33,7 @@
         {
           "number": "17",
           "name": "Colin McNally",
-          "value": "5"
+          "value": "6"
         },
         {
           "number": "41",
@@ -54,7 +54,7 @@
         {
           "number": "17",
           "name": "Colin McNally",
-          "value": "9"
+          "value": "10"
         },
         {
           "number": "93",
@@ -104,8 +104,8 @@
           "value": "4"
         },
         {
-          "number": "40",
-          "name": "Matt Campbell",
+          "number": "37",
+          "name": "Paul Casper",
           "value": "9"
         }
       ]
@@ -115,6 +115,11 @@
       "label": "Save%",
       "leaders": [
         {
+          "number": "40",
+          "name": "Matt Campbell",
+          "value": "86.2%"
+        },
+        {
           "number": "30",
           "name": "Luis Quintana",
           "value": "86.2%"
@@ -123,11 +128,6 @@
           "number": "5",
           "name": "Paul Poirier",
           "value": "81.3%"
-        },
-        {
-          "number": "43",
-          "name": "Eoghan Kyne",
-          "value": "80.0%"
         }
       ]
     }

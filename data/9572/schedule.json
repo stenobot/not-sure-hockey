@@ -3,7 +3,7 @@
   "teamId": "9572",
   "season": "Summer 2026",
   "source": "https://krakenhockeyleague.com/team/9572/schedule",
-  "updated": "2026-07-01T04:22:35.941Z",
+  "updated": "2026-07-05T06:30:51.025Z",
   "games": [
     {
       "num": 1,
@@ -153,9 +153,9 @@
       "score": "3 - 1",
       "teamScore": 1,
       "oppScore": 3,
-      "status": null,
-      "gameId": null,
-      "gameUrl": null
+      "status": "Final",
+      "gameId": "56082",
+      "gameUrl": "https://krakenhockeyleague.com/game/56082/summary"
     },
     {
       "num": 9,
@@ -194,6 +194,44 @@
       "status": "Preview",
       "gameId": "56224",
       "gameUrl": "https://krakenhockeyleague.com/game/56224/preview"
+    },
+    {
+      "num": 11,
+      "date": "2026-07-21",
+      "dateLabel": "Tue, Jul 21",
+      "time": "9:50 PM",
+      "datetime": "2026-07-21T21:50",
+      "arena": "KCI Star",
+      "arenaUrl": "https://krakenhockeyleague.com/arena/28",
+      "homeAway": "AWAY",
+      "opponent": "BSOD",
+      "opponentUrl": "https://krakenhockeyleague.com/team/9938/home",
+      "result": null,
+      "score": null,
+      "teamScore": null,
+      "oppScore": null,
+      "status": "Preview",
+      "gameId": "56282",
+      "gameUrl": "https://krakenhockeyleague.com/game/56282/preview"
+    },
+    {
+      "num": 12,
+      "date": "2026-07-30",
+      "dateLabel": "Thu, Jul 30",
+      "time": "7:45 PM",
+      "datetime": "2026-07-30T19:45",
+      "arena": "KCI VMFH",
+      "arenaUrl": "https://krakenhockeyleague.com/arena/30",
+      "homeAway": "AWAY",
+      "opponent": "Amigos",
+      "opponentUrl": "https://krakenhockeyleague.com/team/16810/home",
+      "result": null,
+      "score": null,
+      "teamScore": null,
+      "oppScore": null,
+      "status": "Preview",
+      "gameId": "56385",
+      "gameUrl": "https://krakenhockeyleague.com/game/56385/preview"
     }
   ]
 }

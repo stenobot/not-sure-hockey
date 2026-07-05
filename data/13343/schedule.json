@@ -3,7 +3,7 @@
   "teamId": "13343",
   "season": "Summer 2026",
   "source": "https://krakenhockeyleague.com/team/13343/schedule",
-  "updated": "2026-07-01T04:22:35.713Z",
+  "updated": "2026-07-05T06:30:50.740Z",
   "games": [
     {
       "num": 1,
@@ -194,6 +194,25 @@
       "status": "Preview",
       "gameId": "56257",
       "gameUrl": "https://krakenhockeyleague.com/game/56257/preview"
+    },
+    {
+      "num": 11,
+      "date": "2026-07-26",
+      "dateLabel": "Sun, Jul 26",
+      "time": "6:00 PM",
+      "datetime": "2026-07-26T18:00",
+      "arena": "KCI VMFH",
+      "arenaUrl": "https://krakenhockeyleague.com/arena/30",
+      "homeAway": "HOME",
+      "opponent": "Real Bacon",
+      "opponentUrl": "https://krakenhockeyleague.com/team/3877/home",
+      "result": null,
+      "score": null,
+      "teamScore": null,
+      "oppScore": null,
+      "status": "Preview",
+      "gameId": "56328",
+      "gameUrl": "https://krakenhockeyleague.com/game/56328/preview"
     }
   ]
 }
