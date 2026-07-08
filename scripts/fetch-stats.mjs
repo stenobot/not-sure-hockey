@@ -11,6 +11,7 @@ const CATEGORIES = [
   { key: 'goals', label: 'Goals' },
   { key: 'assists', label: 'Assists' },
   { key: 'points', label: 'Points' },
+  { key: 'ppg', label: 'PPG' },
   { key: 'gaa', label: 'GAA' },
   { key: 'ga', label: 'GA' },
   { key: 'savePct', label: 'Save%' },
