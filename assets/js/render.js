@@ -223,11 +223,31 @@ function statCard(cat) {
     </div>`;
 }
 
-function renderStats(stats, season) {
+function renderStats(stats, season, schedule) {
   const cats = (stats.categories || []).filter((c) => (c.leaders || []).length);
   el('#stats-sub').textContent = stats.season || season || '';
   const grid = el('#stats-grid');
   if (!grid) return;
+
+  // If we have a Points category, compute a PPG (points-per-game) card and
+  // insert it immediately after the Points card. GP is derived from the
+  // schedule as the number of past games (consistent with isPast logic).
+  const pointsIdx = cats.findIndex((c) => c.key === 'points');
+  if (pointsIdx !== -1 && schedule && Array.isArray(schedule.games)) {
+    const now = pacificNowStr();
+    const gpPlayed = schedule.games.filter((g) => isPast(g, now)).length;
+    if (gpPlayed > 0) {
+      const pointsCat = cats[pointsIdx];
+      const ppgLeaders = (pointsCat.leaders || []).map((p) => {
+        const pts = Number(p.value || 0);
+        const ppg = (pts / gpPlayed).toFixed(2).replace(/\.00$/, '');
+        return { number: p.number, name: p.name, value: ppg };
+      });
+      const ppgCat = { key: 'ppg', label: 'PPG', leaders: ppgLeaders };
+      cats.splice(pointsIdx + 1, 0, ppgCat);
+    }
+  }
+
   grid.innerHTML = cats.length
     ? cats.map(statCard).join('')
     : '<p class="empty-note">Stats not available yet.</p>';
@@ -245,7 +265,7 @@ async function loadTeam(teamId) {
   renderHero(schedule, standings, attendance);
   renderSchedule(schedule);
   renderStandings(standings, schedule.season);
-  renderStats(stats, schedule.season);
+  renderStats(stats, schedule.season, schedule);
   updateCalendarLinks(teamId);
 
   const updated = [schedule.updated, standings.updated, stats.updated]
