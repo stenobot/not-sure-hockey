@@ -3,7 +3,7 @@
   "teamId": "13343",
   "season": "Summer 2026",
   "source": "https://krakenhockeyleague.com/team/13343/home",
-  "updated": "2026-07-06T06:18:02.829Z",
+  "updated": "2026-07-08T02:42:42.024Z",
   "categories": [
     {
       "key": "goals",
@@ -12,16 +12,16 @@
         {
           "number": "4",
           "name": "Luis Quintana",
-          "value": "7"
-        },
-        {
-          "number": "87",
-          "name": "Justin Geffrey",
-          "value": "3"
+          "value": "10"
         },
         {
           "number": "29",
           "name": "Nate Tarampi",
+          "value": "4"
+        },
+        {
+          "number": "87",
+          "name": "Justin Geffrey",
           "value": "3"
         }
       ]
@@ -31,19 +31,19 @@
       "label": "Assists",
       "leaders": [
         {
+          "number": "4",
+          "name": "Luis Quintana",
+          "value": "5"
+        },
+        {
           "number": "87",
           "name": "Justin Geffrey",
-          "value": "4"
+          "value": "5"
         },
         {
           "number": "23",
           "name": "Andy Myers",
-          "value": "4"
-        },
-        {
-          "number": "4",
-          "name": "Luis Quintana",
-          "value": "3"
+          "value": "5"
         }
       ]
     },
@@ -54,17 +54,17 @@
         {
           "number": "4",
           "name": "Luis Quintana",
-          "value": "10"
+          "value": "15"
         },
         {
           "number": "87",
           "name": "Justin Geffrey",
-          "value": "7"
+          "value": "8"
         },
         {
           "number": "23",
           "name": "Andy Myers",
-          "value": "6"
+          "value": "7"
         }
       ]
     },
@@ -85,7 +85,7 @@
         {
           "number": "33",
           "name": "John Heacock",
-          "value": "1.33"
+          "value": "1.75"
         }
       ]
     },
@@ -106,7 +106,7 @@
         {
           "number": "33",
           "name": "John Heacock",
-          "value": "4"
+          "value": "7"
         }
       ]
     },
@@ -117,7 +117,7 @@
         {
           "number": "33",
           "name": "John Heacock",
-          "value": "93.5%"
+          "value": "92.1%"
         },
         {
           "number": "30",

@@ -3,7 +3,7 @@
   "teamId": "13343",
   "season": "Summer 2026",
   "source": "https://krakenhockeyleague.com/team/13343/schedule",
-  "updated": "2026-07-06T06:17:59.416Z",
+  "updated": "2026-07-08T02:42:38.314Z",
   "games": [
     {
       "num": 1,
@@ -149,13 +149,13 @@
       "homeAway": "AWAY",
       "opponent": "Seattle Freeze",
       "opponentUrl": "https://krakenhockeyleague.com/team/8124/home",
-      "result": null,
-      "score": null,
-      "teamScore": null,
-      "oppScore": null,
-      "status": "Preview",
+      "result": "W",
+      "score": "10 - 3",
+      "teamScore": 10,
+      "oppScore": 3,
+      "status": "Final",
       "gameId": "56114",
-      "gameUrl": "https://krakenhockeyleague.com/game/56114/preview"
+      "gameUrl": "https://krakenhockeyleague.com/game/56114/summary"
     },
     {
       "num": 9,
@@ -213,6 +213,44 @@
       "status": "Preview",
       "gameId": "56328",
       "gameUrl": "https://krakenhockeyleague.com/game/56328/preview"
+    },
+    {
+      "num": 12,
+      "date": "2026-08-02",
+      "dateLabel": "Sun, Aug 2",
+      "time": "10:45 PM",
+      "datetime": "2026-08-02T22:45",
+      "arena": "EVT COMM",
+      "arenaUrl": "https://krakenhockeyleague.com/arena/18",
+      "homeAway": "AWAY",
+      "opponent": "Hampton West Hockey Club",
+      "opponentUrl": "https://krakenhockeyleague.com/team/10185/home",
+      "result": null,
+      "score": null,
+      "teamScore": null,
+      "oppScore": null,
+      "status": "Preview",
+      "gameId": "56406",
+      "gameUrl": "https://krakenhockeyleague.com/game/56406/preview"
+    },
+    {
+      "num": 13,
+      "date": "2026-08-09",
+      "dateLabel": "Sun, Aug 9",
+      "time": "8:25 PM",
+      "datetime": "2026-08-09T20:25",
+      "arena": "KCI Star",
+      "arenaUrl": "https://krakenhockeyleague.com/arena/28",
+      "homeAway": "AWAY",
+      "opponent": "Seattle Freeze",
+      "opponentUrl": "https://krakenhockeyleague.com/team/8124/home",
+      "result": null,
+      "score": null,
+      "teamScore": null,
+      "oppScore": null,
+      "status": "Preview",
+      "gameId": "56456",
+      "gameUrl": "https://krakenhockeyleague.com/game/56456/preview"
     }
   ]
 }
