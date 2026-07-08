@@ -3,7 +3,7 @@
   "teamId": "13343",
   "season": "Summer 2026",
   "source": "https://krakenhockeyleague.com/team/13343/home",
-  "updated": "2026-07-08T02:52:11.101Z",
+  "updated": "2026-07-08T03:04:20.413Z",
   "categories": [
     {
       "key": "goals",
@@ -71,7 +71,23 @@
     {
       "key": "ppg",
       "label": "PPG",
-      "leaders": []
+      "leaders": [
+        {
+          "number": "94",
+          "name": "Phantasia Jendro",
+          "value": "5.00"
+        },
+        {
+          "number": "4",
+          "name": "Luis Quintana",
+          "value": "3.75"
+        },
+        {
+          "number": "9",
+          "name": "Ben Savage",
+          "value": "2.00"
+        }
+      ]
     },
     {
       "key": "gaa",
