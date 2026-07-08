@@ -180,10 +180,19 @@ function renderStandings(standings, season) {
   el('#standings-sub').textContent = season || '';
   const body = el('#standings-body');
   if (!rows.length) {
-    body.innerHTML = '<tr><td colspan="9" class="empty-note">Standings not available.</td></tr>';
+    body.innerHTML = '<tr><td colspan="10" class="empty-note">Standings not available.</td></tr>';
     return;
   }
-  body.innerHTML = rows.map((r) => `
+  body.innerHTML = rows.map((r) => {
+    // Compute points-per-game (PPG). Show as number with up to 2 decimals,
+    // trimming trailing .00 for integers. If gp is missing or zero, show '—'.
+    const gp = Number(r.gp || 0);
+    const pts = Number(r.pts || 0);
+    let ppg = '—';
+    if (gp > 0) {
+      ppg = (pts / gp).toFixed(2).replace(/\.00$/, '');
+    }
+    return `
     <tr class="${r.isOurTeam ? 'is-ours' : ''}">
       <td class="st-rank ta-c">${escape(r.rank ?? '')}</td>
       <td class="st-team">${escape(r.team || '')}</td>
@@ -192,9 +201,11 @@ function renderStandings(standings, season) {
       <td class="ta-c">${escape(r.l ?? '')}</td>
       <td class="ta-c">${escape(r.t ?? '')}</td>
       <td class="st-pts ta-c">${escape(r.pts ?? '')}</td>
+      <td class="ta-c">${escape(ppg)}</td>
       <td class="ta-c hide-sm">${escape(r.gf ?? '')}</td>
       <td class="ta-c hide-sm">${escape(r.ga ?? '')}</td>
-    </tr>`).join('');
+    </tr>`;
+  }).join('');
 }
 
 /* ---------- team leaders / stats ---------- */
