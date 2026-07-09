@@ -2,6 +2,7 @@ node_modules/
 npm-debug.log*
 .DS_Store
 *.tmp
+fetch-all.log
 
 # BenchApp scraper — local secrets & persisted browser session (never commit)
 .benchapp.local.json
