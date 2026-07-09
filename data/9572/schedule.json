@@ -3,7 +3,7 @@
   "teamId": "9572",
   "season": "Summer 2026",
   "source": "https://krakenhockeyleague.com/team/9572/schedule",
-  "updated": "2026-07-08T02:52:07.271Z",
+  "updated": "2026-07-09T15:10:20.758Z",
   "games": [
     {
       "num": 1,
@@ -168,13 +168,13 @@
       "homeAway": "HOME",
       "opponent": "WKUTP-5",
       "opponentUrl": "https://krakenhockeyleague.com/team/674/home",
-      "result": null,
-      "score": null,
-      "teamScore": null,
-      "oppScore": null,
-      "status": "Preview",
+      "result": "L",
+      "score": "4 - 0",
+      "teamScore": 0,
+      "oppScore": 4,
+      "status": "Final",
       "gameId": "56148",
-      "gameUrl": "https://krakenhockeyleague.com/game/56148/preview"
+      "gameUrl": "https://krakenhockeyleague.com/game/56148/summary"
     },
     {
       "num": 10,
