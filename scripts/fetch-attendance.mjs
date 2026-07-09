@@ -15,7 +15,7 @@
 // output holds aggregate counts only (no names / PII).
 
 import { firefox } from 'playwright';
-import { access } from 'node:fs/promises';
+import { access, readFile } from 'node:fs/promises';
 import readline from 'node:readline';
 import { teams } from './lib/config.mjs';
 import { writeJson, nowIso } from './lib/parse.mjs';
@@ -37,6 +37,30 @@ const HEADED = LOGIN_MODE || !process.env.BENCHAPP_HEADLESS;
 const LOGIN_URL = 'https://www.benchapp.com/';
 
 const fileExists = (p) => access(p).then(() => true).catch(() => false);
+
+// Load the league schedule and find the next upcoming game.
+async function getNextGameFromSchedule(teamId) {
+  try {
+    const scheduleJson = await readFile(`data/${teamId}/schedule.json`, 'utf8');
+    const schedule = JSON.parse(scheduleJson);
+    const now = new Date();
+    const pacificNow = new Intl.DateTimeFormat('en-CA', {
+      timeZone: 'America/Los_Angeles', year: 'numeric', month: '2-digit',
+      day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false,
+    });
+    const pParts = Object.fromEntries(pacificNow.formatToParts(now).map((x) => [x.type, x.value]));
+    const pacificNowStr = `${pParts.year}-${pParts.month}-${pParts.day}T${pParts.hour}:${pParts.minute}`;
+    
+    const nextGame = (schedule.games || []).find((g) => !g.result && g.datetime >= pacificNowStr);
+    if (nextGame) {
+      return { date: nextGame.date, opponent: nextGame.opponent, datetime: nextGame.datetime };
+    }
+  } catch (e) {
+    console.log(`[benchapp] could not load schedule: ${e.message}`);
+  }
+  return null;
+}
+
 
 // BenchApp's authenticated markup isn't publicly visible, so the parsers below
 // (findNextGame / parseAttendance) are tuned against the live logged-in view and
@@ -105,6 +129,69 @@ async function getDisplayedGame(page) {
     }
     return { date, datetime, label: hdr.textContent.trim() };
   });
+}
+
+// Check if a game date is in the past (in Pacific time).
+function isGamePast(gameDate) {
+  if (!gameDate) return false;
+  const now = new Date();
+  const pacificNow = new Intl.DateTimeFormat('en-CA', {
+    timeZone: 'America/Los_Angeles', year: 'numeric', month: '2-digit',
+    day: '2-digit', hour: '2-digit', minute: '2-digit', hour12: false,
+  });
+  const pParts = Object.fromEntries(pacificNow.formatToParts(now).map((x) => [x.type, x.value]));
+  const pacificNowStr = `${pParts.year}-${pParts.month}-${pParts.day}T${pParts.hour}:${pParts.minute}`;
+  return gameDate < pacificNowStr;
+}
+
+// Navigate to the next upcoming game if the current one is in the past.
+// Tries keyboard navigation and clicking schedule links to find a future game.
+async function advanceToNextGame(page) {
+  // First, try keyboard navigation (arrow right)
+  console.log('[benchapp] trying arrow key navigation to find next game…');
+  for (let attempt = 0; attempt < 12; attempt++) {
+    try {
+      await page.press('body', 'ArrowRight').catch(() => {});
+      await humanDelay(500, 1000);
+      const game = await getDisplayedGame(page);
+      if (game) {
+        console.log(`[benchapp] after arrow key ${attempt + 1}: found game ${game.date}`);
+        if (!isGamePast(game.datetime)) {
+          console.log(`[benchapp] game ${game.date} is upcoming; using this one.`);
+          return true;
+        }
+      }
+    } catch (e) {
+      console.log(`[benchapp] arrow key attempt ${attempt + 1} failed: ${e.message}`);
+      break;
+    }
+  }
+  
+  // Fall back to clicking schedule links to find a future game
+  console.log('[benchapp] trying to click schedule links to find next game…');
+  const scheduleLinks = await page.locator('a[href*="/schedule/"]').all();
+  if (scheduleLinks.length > 0) {
+    console.log(`[benchapp] found ${scheduleLinks.length} schedule links`);
+    for (let i = 0; i < Math.min(scheduleLinks.length, 15); i++) {
+      try {
+        await scheduleLinks[i].click().catch(() => {});
+        await humanDelay(600, 1200);
+        const game = await getDisplayedGame(page);
+        if (game) {
+          console.log(`[benchapp] clicked schedule link ${i + 1}: found game ${game.date}`);
+          if (!isGamePast(game.datetime)) {
+            console.log(`[benchapp] game ${game.date} is upcoming; using this one.`);
+            return true;
+          }
+        }
+      } catch (e) {
+        console.log(`[benchapp] error clicking schedule link ${i + 1}: ${e.message}`);
+      }
+    }
+  }
+  
+  console.log('[benchapp] could not find or navigate to a future game.');
+  return false;
 }
 
 // Parse the next game's IN / OUT counts from the deep-link game page. BenchApp
@@ -232,8 +319,7 @@ async function run() {
   const page = await context.newPage();
 
   try {
-    // Load the app shell first, then the schedule deep link (BenchApp is a
-    // client-routed SPA, so warming the base helps the route resolve).
+    // Load the app shell first, then navigate to the schedule list page.
     await page.goto(LOGIN_URL, { waitUntil: 'domcontentloaded' }).catch(() => {});
     await humanDelay();
     await page.goto(team.benchApp.scheduleUrl, { waitUntil: 'networkidle' });
@@ -268,46 +354,84 @@ async function run() {
       await context.storageState({ path: SESSION_FILE });
     }
 
-    // Let the SPA finish rendering the schedule before reading it.
+    // Let the SPA finish rendering the schedule list before interacting with it.
     await page.waitForLoadState('networkidle').catch(() => {});
-    await page.waitForTimeout(5000);
+    await page.waitForTimeout(3000);
 
-    // First authenticated runs: dump the schedule page + diagnostics so the
-    // parsing selectors can be finalized against the real logged-in markup.
     if (DEBUG) {
-      await dumpDebug(page, 'schedule');
-      const diag = await page.evaluate(() => ({
-        url: location.href,
-        htmlLen: document.documentElement.outerHTML.length,
-        scheduleLinks: document.querySelectorAll('a[href*="/schedule/"]').length,
-        gameLinks: document.querySelectorAll('a[href*="/game/"]').length,
-        bodyText: (document.body.innerText || '').replace(/\s+/g, ' ').slice(0, 300),
-      }));
-      console.log('[benchapp] schedule diagnostics:', JSON.stringify(diag));
+      await dumpDebug(page, 'schedule-list');
     }
 
-    // The deep link lands on the next game and shows its In/Out summary, so we
-    // parse this page directly (no navigation to a separate, slow-loading view).
-    const game = await getDisplayedGame(page);
-    const { in: inCount, out: outCount } = await parseAttendance(page);
-    if (!game || (inCount == null && outCount == null)) {
-      await dumpDebug(page, 'attendance');
-    }
-    if (inCount == null && outCount == null) {
-      console.warn('[benchapp] could not read IN/OUT for the next game ' +
-        '(run `npm run benchapp:debug` and share scripts/.benchapp-debug-attendance.html). Keeping last-good data.');
+    // Identify which game is the next upcoming one from the local league schedule.
+    const nextUpcoming = await getNextGameFromSchedule(team.id);
+    if (!nextUpcoming) {
+      console.warn('[benchapp] no upcoming games found in league schedule. Keeping last-good data.');
       return;
     }
+    console.log(`[benchapp] next upcoming game: ${nextUpcoming.opponent} on ${nextUpcoming.date}`);
+
+    // Click on the game in BenchApp's schedule list that matches our upcoming game.
+    // This will navigate to a deep-link URL like /schedule/{SCHEDULE_ID}?teamId=...
+    // which displays the game details including IN/OUT counts.
+    console.log('[benchapp] looking for matching game in schedule list…');
+    const gameLinks = await page.locator('a[href*="/schedule/"]').all();
+    if (gameLinks.length === 0) {
+      console.warn('[benchapp] no game links found in schedule list. Keeping last-good data.');
+      return;
+    }
+
+    // Try to find and click the game link that matches the next upcoming game date.
+    // Extract the date from each link's text and find the match.
+    let foundMatch = false;
+    for (let i = 0; i < gameLinks.length; i++) {
+      const linkText = await gameLinks[i].textContent().catch(() => '');
+      // Check if this link's text contains the opponent name or date
+      if (linkText.includes(nextUpcoming.opponent) || linkText.includes(nextUpcoming.date.split('-').slice(1).join('/'))) {
+        console.log(`[benchapp] found matching game at index ${i}; clicking…`);
+        await gameLinks[i].click().catch(() => {});
+        foundMatch = true;
+        break;
+      }
+    }
+
+    if (!foundMatch) {
+      // Fallback: if we couldn't match by text, click the first game link
+      // (BenchApp's schedule list is usually sorted, so first is next upcoming)
+      console.log('[benchapp] could not match by opponent/date; clicking first game link…');
+      await gameLinks[0].click().catch(() => {});
+    }
+
+    await humanDelay(1000, 2000);
+
+    // Wait for the game detail page to load
+    await page.waitForLoadState('networkidle').catch(() => {});
+    await page.waitForTimeout(2000);
+
+    if (DEBUG) {
+      await dumpDebug(page, 'schedule');
+    }
+
+    // Parse the game details and IN/OUT counts from this page
+    const game = await getDisplayedGame(page);
+    const { in: inCount, out: outCount } = await parseAttendance(page);
+
+    if (!game || (inCount == null && outCount == null)) {
+      await dumpDebug(page, 'attendance');
+      console.warn('[benchapp] could not read game date or IN/OUT for the upcoming game. Keeping last-good data.');
+      return;
+    }
+
+    console.log(`[benchapp] found game ${game.date} with ${inCount ?? '?'} IN / ${outCount ?? '?'} OUT`);
 
     const payload = {
       team: team.name,
       teamId: team.id,
       gameId: null,
-      date: game ? game.date : null,
-      datetime: game ? game.datetime : null,
+      date: game.date,
+      datetime: game.datetime,
       in: inCount,
       out: outCount,
-      source: team.benchApp.scheduleUrl,
+      source: page.url(),
       updated: nowIso(),
     };
 
@@ -316,8 +440,7 @@ async function run() {
       payload,
       (d) => d.in == null && d.out == null
     );
-    console.log(`[benchapp] ${team.id} next game ${(game && game.date) || '?'}: ` +
-      `${inCount ?? '?'} IN / ${outCount ?? '?'} OUT.`);
+    console.log(`[benchapp] ${team.id} next game ${game.date}: ${inCount ?? '?'} IN / ${outCount ?? '?'} OUT.`);
   } finally {
     await browser.close();
   }
