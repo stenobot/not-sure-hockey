@@ -3,7 +3,7 @@
   "teamId": "9572",
   "division": "Division 5A",
   "source": "https://krakenhockeyleague.com/standings",
-  "updated": "2026-07-09T15:12:21.703Z",
+  "updated": "2026-07-10T03:49:03.075Z",
   "standings": [
     {
       "teamId": "674",
@@ -49,18 +49,18 @@
       "isOurTeam": false,
       "rank": 3,
       "team": "Dead Rabbits",
-      "gp": 8,
+      "gp": 9,
       "w": 3,
-      "l": 3,
+      "l": 4,
       "t": 2,
       "otl": 0,
       "pts": 8,
-      "ptsPct": 0.5,
-      "gf": 27,
-      "gfa": 3.38,
-      "ga": 29,
-      "gaa": 3.63,
-      "pim": 16
+      "ptsPct": 0.444,
+      "gf": 29,
+      "gfa": 3.22,
+      "ga": 33,
+      "gaa": 3.67,
+      "pim": 18
     },
     {
       "teamId": "9938",
@@ -82,10 +82,29 @@
       "pim": 50
     },
     {
+      "teamId": "16810",
+      "teamUrl": "https://krakenhockeyleague.com/team/16810/home",
+      "isOurTeam": false,
+      "rank": 5,
+      "team": "Amigos",
+      "gp": 9,
+      "w": 2,
+      "l": 6,
+      "t": 1,
+      "otl": 0,
+      "pts": 5,
+      "ptsPct": 0.278,
+      "gf": 30,
+      "gfa": 3.33,
+      "ga": 42,
+      "gaa": 4.67,
+      "pim": 38
+    },
+    {
       "teamId": "9572",
       "teamUrl": "https://krakenhockeyleague.com/team/9572/home",
       "isOurTeam": true,
-      "rank": 5,
+      "rank": 6,
       "team": "Not Sure 5",
       "gp": 9,
       "w": 2,
@@ -99,25 +118,6 @@
       "ga": 53,
       "gaa": 5.89,
       "pim": 20
-    },
-    {
-      "teamId": "16810",
-      "teamUrl": "https://krakenhockeyleague.com/team/16810/home",
-      "isOurTeam": false,
-      "rank": 6,
-      "team": "Amigos",
-      "gp": 8,
-      "w": 1,
-      "l": 6,
-      "t": 1,
-      "otl": 0,
-      "pts": 3,
-      "ptsPct": 0.188,
-      "gf": 26,
-      "gfa": 3.25,
-      "ga": 40,
-      "gaa": 5,
-      "pim": 30
     }
   ]
 }
