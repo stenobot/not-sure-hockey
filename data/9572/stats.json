@@ -3,7 +3,7 @@
   "teamId": "9572",
   "season": "Summer 2026",
   "source": "https://krakenhockeyleague.com/team/9572/home",
-  "updated": "2026-07-11T03:06:26.628Z",
+  "updated": "2026-07-18T02:44:58.067Z",
   "categories": [
     {
       "key": "goals",
@@ -75,7 +75,7 @@
         {
           "number": "41",
           "name": "Bryan Chacosky",
-          "value": "2.33"
+          "value": "1.75"
         },
         {
           "number": "17",
@@ -85,7 +85,7 @@
         {
           "number": "27",
           "name": "Colin Hutchinson",
-          "value": "1.20"
+          "value": "1.00"
         }
       ]
     },
@@ -99,14 +99,14 @@
           "value": "0.00"
         },
         {
+          "number": "72",
+          "name": "Morgan Wirt",
+          "value": "0.00"
+        },
+        {
           "number": "30",
           "name": "Luis Quintana",
           "value": "4.00"
-        },
-        {
-          "number": "43",
-          "name": "Eoghan Kyne",
-          "value": "5.00"
         }
       ]
     },
@@ -120,14 +120,14 @@
           "value": "0"
         },
         {
+          "number": "72",
+          "name": "Morgan Wirt",
+          "value": "0"
+        },
+        {
           "number": "30",
           "name": "Luis Quintana",
           "value": "4"
-        },
-        {
-          "number": "37",
-          "name": "Paul Casper",
-          "value": "9"
         }
       ]
     },
@@ -138,7 +138,7 @@
         {
           "number": "40",
           "name": "Matt Campbell",
-          "value": "87.2%"
+          "value": "86.4%"
         },
         {
           "number": "30",

@@ -3,7 +3,7 @@
   "teamId": "13343",
   "season": "Summer 2026",
   "source": "https://krakenhockeyleague.com/team/13343/home",
-  "updated": "2026-07-11T03:06:26.130Z",
+  "updated": "2026-07-18T02:44:57.600Z",
   "categories": [
     {
       "key": "goals",
@@ -15,14 +15,14 @@
           "value": "10"
         },
         {
-          "number": "29",
-          "name": "Nate Tarampi",
+          "number": "71",
+          "name": "Jordan Oroshiba",
           "value": "4"
         },
         {
-          "number": "87",
-          "name": "Justin Geffrey",
-          "value": "3"
+          "number": "29",
+          "name": "Nate Tarampi",
+          "value": "4"
         }
       ]
     },
@@ -41,8 +41,8 @@
           "value": "5"
         },
         {
-          "number": "23",
-          "name": "Andy Myers",
+          "number": "65",
+          "name": "Blair McLaughlin",
           "value": "5"
         }
       ]
@@ -62,9 +62,9 @@
           "value": "8"
         },
         {
-          "number": "23",
-          "name": "Andy Myers",
-          "value": "7"
+          "number": "65",
+          "name": "Blair McLaughlin",
+          "value": "8"
         }
       ]
     },
@@ -73,14 +73,14 @@
       "label": "PPG",
       "leaders": [
         {
-          "number": "94",
-          "name": "Phantasia Jendro",
-          "value": "5.00"
-        },
-        {
           "number": "4",
           "name": "Luis Quintana",
           "value": "3.75"
+        },
+        {
+          "number": "94",
+          "name": "Phantasia Jendro",
+          "value": "2.50"
         },
         {
           "number": "9",
@@ -125,9 +125,9 @@
           "value": "0"
         },
         {
-          "number": "33",
-          "name": "John Heacock",
-          "value": "7"
+          "number": "72",
+          "name": "MORGAN WIRT",
+          "value": "3"
         }
       ]
     },
@@ -141,14 +141,14 @@
           "value": "92.1%"
         },
         {
+          "number": "72",
+          "name": "MORGAN WIRT",
+          "value": "91.4%"
+        },
+        {
           "number": "30",
           "name": "Luis Quintana",
           "value": "90.9%"
-        },
-        {
-          "number": "41",
-          "name": "BRIAN CHACOSKY",
-          "value": "0.0%"
         }
       ]
     }

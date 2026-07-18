@@ -3,7 +3,7 @@
   "teamId": "13343",
   "season": "Summer 2026",
   "source": "https://krakenhockeyleague.com/team/13343/schedule",
-  "updated": "2026-07-11T03:06:22.091Z",
+  "updated": "2026-07-18T02:44:53.688Z",
   "games": [
     {
       "num": 1,
@@ -168,13 +168,13 @@
       "homeAway": "AWAY",
       "opponent": "Chucklepucks",
       "opponentUrl": "https://krakenhockeyleague.com/team/19446/home",
-      "result": null,
-      "score": null,
-      "teamScore": null,
-      "oppScore": null,
-      "status": "Preview",
+      "result": "T",
+      "score": "3 - 3",
+      "teamScore": 3,
+      "oppScore": 3,
+      "status": "Final",
       "gameId": "56191",
-      "gameUrl": "https://krakenhockeyleague.com/game/56191/preview"
+      "gameUrl": "https://krakenhockeyleague.com/game/56191/summary"
     },
     {
       "num": 10,

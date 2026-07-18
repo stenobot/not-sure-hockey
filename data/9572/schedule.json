@@ -3,7 +3,7 @@
   "teamId": "9572",
   "season": "Summer 2026",
   "source": "https://krakenhockeyleague.com/team/9572/schedule",
-  "updated": "2026-07-11T03:06:22.361Z",
+  "updated": "2026-07-18T02:44:53.921Z",
   "games": [
     {
       "num": 1,
@@ -187,13 +187,13 @@
       "homeAway": "AWAY",
       "opponent": "Dumpster Fire",
       "opponentUrl": "https://krakenhockeyleague.com/team/9940/home",
-      "result": null,
-      "score": null,
-      "teamScore": null,
-      "oppScore": null,
-      "status": "Preview",
+      "result": "L",
+      "score": "6 - 1",
+      "teamScore": 1,
+      "oppScore": 6,
+      "status": "Final",
       "gameId": "56224",
-      "gameUrl": "https://krakenhockeyleague.com/game/56224/preview"
+      "gameUrl": "https://krakenhockeyleague.com/game/56224/summary"
     },
     {
       "num": 11,
