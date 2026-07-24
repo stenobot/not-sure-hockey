@@ -3,7 +3,7 @@
   "teamId": "13343",
   "division": "Division 6D",
   "source": "https://krakenhockeyleague.com/standings",
-  "updated": "2026-07-20T04:42:13.034Z",
+  "updated": "2026-07-24T03:23:57.420Z",
   "standings": [
     {
       "teamId": "19446",
@@ -22,7 +22,7 @@
       "gfa": 4.1,
       "ga": 32,
       "gaa": 3.2,
-      "pim": 26
+      "pim": 30
     },
     {
       "teamId": "13343",
@@ -30,18 +30,18 @@
       "isOurTeam": true,
       "rank": 2,
       "team": "Not Sure 6",
-      "gp": 9,
+      "gp": 10,
       "w": 6,
-      "l": 2,
+      "l": 3,
       "t": 1,
       "otl": 0,
       "pts": 13,
-      "ptsPct": 0.722,
-      "gf": 38,
-      "gfa": 4.22,
-      "ga": 19,
-      "gaa": 2.11,
-      "pim": 18
+      "ptsPct": 0.65,
+      "gf": 41,
+      "gfa": 4.1,
+      "ga": 23,
+      "gaa": 2.3,
+      "pim": 26
     },
     {
       "teamId": "10185",
@@ -60,7 +60,7 @@
       "gfa": 4.33,
       "ga": 27,
       "gaa": 3,
-      "pim": 14
+      "pim": 24
     },
     {
       "teamId": "4535",
@@ -68,18 +68,18 @@
       "isOurTeam": false,
       "rank": 4,
       "team": "Trash Pandas Garbage Legacy",
-      "gp": 9,
-      "w": 3,
+      "gp": 10,
+      "w": 4,
       "l": 5,
       "t": 1,
       "otl": 0,
-      "pts": 7,
-      "ptsPct": 0.389,
-      "gf": 21,
-      "gfa": 2.33,
-      "ga": 32,
-      "gaa": 3.56,
-      "pim": 10
+      "pts": 9,
+      "ptsPct": 0.45,
+      "gf": 25,
+      "gfa": 2.5,
+      "ga": 35,
+      "gaa": 3.5,
+      "pim": 18
     },
     {
       "teamId": "8124",
@@ -98,7 +98,7 @@
       "gfa": 3.1,
       "ga": 46,
       "gaa": 4.6,
-      "pim": 42
+      "pim": 48
     },
     {
       "teamId": "3877",

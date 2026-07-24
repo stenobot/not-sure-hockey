@@ -3,7 +3,7 @@
   "teamId": "13343",
   "season": "Summer 2026",
   "source": "https://krakenhockeyleague.com/team/13343/schedule",
-  "updated": "2026-07-20T04:42:11.093Z",
+  "updated": "2026-07-24T03:23:55.293Z",
   "games": [
     {
       "num": 1,
@@ -187,13 +187,13 @@
       "homeAway": "HOME",
       "opponent": "Trash Pandas Garbage Legacy",
       "opponentUrl": "https://krakenhockeyleague.com/team/4535/home",
-      "result": null,
-      "score": null,
-      "teamScore": null,
-      "oppScore": null,
-      "status": "Preview",
+      "result": "L",
+      "score": "4 - 3",
+      "teamScore": 3,
+      "oppScore": 4,
+      "status": "Final",
       "gameId": "56257",
-      "gameUrl": "https://krakenhockeyleague.com/game/56257/preview"
+      "gameUrl": "https://krakenhockeyleague.com/game/56257/summary"
     },
     {
       "num": 11,

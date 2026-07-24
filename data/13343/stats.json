@@ -3,7 +3,7 @@
   "teamId": "13343",
   "season": "Summer 2026",
   "source": "https://krakenhockeyleague.com/team/13343/home",
-  "updated": "2026-07-20T04:42:15.268Z",
+  "updated": "2026-07-24T03:23:59.282Z",
   "categories": [
     {
       "key": "goals",
@@ -31,18 +31,18 @@
       "label": "Assists",
       "leaders": [
         {
-          "number": "4",
-          "name": "Luis Quintana",
-          "value": "5"
+          "number": "65",
+          "name": "Blair McLaughlin",
+          "value": "7"
         },
         {
           "number": "87",
           "name": "Justin Geffrey",
-          "value": "5"
+          "value": "6"
         },
         {
-          "number": "65",
-          "name": "Blair McLaughlin",
+          "number": "4",
+          "name": "Luis Quintana",
           "value": "5"
         }
       ]
@@ -57,14 +57,14 @@
           "value": "15"
         },
         {
-          "number": "87",
-          "name": "Justin Geffrey",
-          "value": "8"
-        },
-        {
           "number": "65",
           "name": "Blair McLaughlin",
-          "value": "8"
+          "value": "10"
+        },
+        {
+          "number": "87",
+          "name": "Justin Geffrey",
+          "value": "9"
         }
       ]
     },
@@ -78,14 +78,14 @@
           "value": "3.75"
         },
         {
-          "number": "94",
-          "name": "Phantasia Jendro",
-          "value": "2.50"
-        },
-        {
           "number": "9",
           "name": "Ben Savage",
           "value": "2.00"
+        },
+        {
+          "number": "94",
+          "name": "Phantasia Jendro",
+          "value": "1.67"
         }
       ]
     },
