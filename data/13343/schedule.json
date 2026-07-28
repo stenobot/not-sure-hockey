@@ -3,7 +3,7 @@
   "teamId": "13343",
   "season": "Summer 2026",
   "source": "https://krakenhockeyleague.com/team/13343/schedule",
-  "updated": "2026-07-26T16:14:26.638Z",
+  "updated": "2026-07-28T01:04:02.749Z",
   "games": [
     {
       "num": 1,
@@ -206,13 +206,13 @@
       "homeAway": "HOME",
       "opponent": "Real Bacon",
       "opponentUrl": "https://krakenhockeyleague.com/team/3877/home",
-      "result": null,
-      "score": null,
-      "teamScore": null,
-      "oppScore": null,
-      "status": "Preview",
+      "result": "T",
+      "score": "4 - 4",
+      "teamScore": 4,
+      "oppScore": 4,
+      "status": "Final",
       "gameId": "56328",
-      "gameUrl": "https://krakenhockeyleague.com/game/56328/preview"
+      "gameUrl": "https://krakenhockeyleague.com/game/56328/summary"
     },
     {
       "num": 12,
