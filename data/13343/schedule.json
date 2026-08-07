@@ -3,7 +3,7 @@
   "teamId": "13343",
   "season": "Summer 2026",
   "source": "https://krakenhockeyleague.com/team/13343/schedule",
-  "updated": "2026-07-31T22:42:03.274Z",
+  "updated": "2026-08-07T15:47:37.463Z",
   "games": [
     {
       "num": 1,
@@ -225,13 +225,13 @@
       "homeAway": "AWAY",
       "opponent": "Hampton West Hockey Club",
       "opponentUrl": "https://krakenhockeyleague.com/team/10185/home",
-      "result": null,
-      "score": null,
-      "teamScore": null,
-      "oppScore": null,
-      "status": "Preview",
-      "gameId": "56406",
-      "gameUrl": "https://krakenhockeyleague.com/game/56406/preview"
+      "result": "L",
+      "score": "11 - 3",
+      "teamScore": 3,
+      "oppScore": 11,
+      "status": null,
+      "gameId": null,
+      "gameUrl": null
     },
     {
       "num": 13,
