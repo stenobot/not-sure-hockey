@@ -1,28 +1,28 @@
 {
   "team": "Not Sure",
   "teamId": "13343",
-  "season": "Summer 2026",
+  "season": "Summer 2026 Playoffs",
   "source": "https://krakenhockeyleague.com/team/13343/home",
-  "updated": "2026-08-07T15:47:42.096Z",
+  "updated": "2026-08-19T04:11:15.509Z",
   "categories": [
     {
       "key": "goals",
       "label": "Goals",
       "leaders": [
         {
-          "number": "4",
-          "name": "Luis Quintana",
-          "value": "10"
+          "number": "71",
+          "name": "Jordan Oroshiba",
+          "value": "2"
         },
         {
           "number": "65",
           "name": "Blair McLaughlin",
-          "value": "4"
+          "value": "1"
         },
         {
-          "number": "71",
-          "name": "Jordan Oroshiba",
-          "value": "4"
+          "number": "23",
+          "name": "Andy Myers",
+          "value": "1"
         }
       ]
     },
@@ -33,17 +33,17 @@
         {
           "number": "65",
           "name": "Blair McLaughlin",
-          "value": "9"
+          "value": "2"
         },
         {
-          "number": "87",
-          "name": "Justin Geffrey",
-          "value": "6"
+          "number": "16",
+          "name": "Ryan Benson",
+          "value": "2"
         },
         {
-          "number": "4",
-          "name": "Luis Quintana",
-          "value": "5"
+          "number": "23",
+          "name": "Andy Myers",
+          "value": "1"
         }
       ]
     },
@@ -52,19 +52,19 @@
       "label": "Points",
       "leaders": [
         {
-          "number": "4",
-          "name": "Luis Quintana",
-          "value": "15"
-        },
-        {
           "number": "65",
           "name": "Blair McLaughlin",
-          "value": "13"
+          "value": "3"
         },
         {
-          "number": "87",
-          "name": "Justin Geffrey",
-          "value": "9"
+          "number": "71",
+          "name": "Jordan Oroshiba",
+          "value": "2"
+        },
+        {
+          "number": "23",
+          "name": "Andy Myers",
+          "value": "2"
         }
       ]
     },
@@ -73,19 +73,19 @@
       "label": "PPG",
       "leaders": [
         {
-          "number": "4",
-          "name": "Luis Quintana",
-          "value": "3.75"
+          "number": "65",
+          "name": "Blair McLaughlin",
+          "value": "3.00"
         },
         {
-          "number": "9",
-          "name": "Ben Savage",
+          "number": "16",
+          "name": "Ryan Benson",
           "value": "2.00"
         },
         {
-          "number": "29",
-          "name": "Nate Tarampi",
-          "value": "1.33"
+          "number": "23",
+          "name": "Andy Myers",
+          "value": "2.00"
         }
       ]
     },
@@ -94,19 +94,19 @@
       "label": "GAA",
       "leaders": [
         {
+          "number": "3",
+          "name": "Lance Bushore",
+          "value": "0.00"
+        },
+        {
           "number": "41",
           "name": "BRIAN CHACOSKY",
           "value": "0.00"
         },
         {
-          "number": "29",
-          "name": "Zach Stacy",
+          "number": "30",
+          "name": "Luis Quintana",
           "value": "0.00"
-        },
-        {
-          "number": "33",
-          "name": "John Heacock",
-          "value": "2.20"
         }
       ]
     },
@@ -115,19 +115,19 @@
       "label": "GA",
       "leaders": [
         {
+          "number": "3",
+          "name": "Lance Bushore",
+          "value": "0"
+        },
+        {
           "number": "41",
           "name": "BRIAN CHACOSKY",
           "value": "0"
         },
         {
-          "number": "29",
-          "name": "Zach Stacy",
+          "number": "30",
+          "name": "Luis Quintana",
           "value": "0"
-        },
-        {
-          "number": "72",
-          "name": "MORGAN WIRT",
-          "value": "3"
         }
       ]
     },
@@ -136,19 +136,19 @@
       "label": "Save%",
       "leaders": [
         {
-          "number": "72",
-          "name": "MORGAN WIRT",
-          "value": "91.4%"
-        },
-        {
-          "number": "30",
-          "name": "Luis Quintana",
-          "value": "90.9%"
-        },
-        {
           "number": "33",
           "name": "John Heacock",
-          "value": "90.2%"
+          "value": "88.6%"
+        },
+        {
+          "number": "3",
+          "name": "Lance Bushore",
+          "value": "0.0%"
+        },
+        {
+          "number": "41",
+          "name": "BRIAN CHACOSKY",
+          "value": "0.0%"
         }
       ]
     }
