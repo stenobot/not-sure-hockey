@@ -3,7 +3,7 @@
   "teamId": "13343",
   "season": "Summer 2026 Playoffs",
   "source": "https://krakenhockeyleague.com/team/13343/schedule",
-  "updated": "2026-08-24T14:13:43.023Z",
+  "updated": "2026-08-26T00:05:50.476Z",
   "games": [
     {
       "num": 1,
@@ -35,13 +35,32 @@
       "homeAway": "AWAY",
       "opponent": "Chucklepucks",
       "opponentUrl": "https://krakenhockeyleague.com/team/19446/home",
+      "result": "W",
+      "score": "4 - 3",
+      "teamScore": 4,
+      "oppScore": 3,
+      "status": null,
+      "gameId": null,
+      "gameUrl": null
+    },
+    {
+      "num": 3,
+      "date": "2026-08-30",
+      "dateLabel": "Sun, Aug 30",
+      "time": "8:50 PM",
+      "datetime": "2026-08-30T20:50",
+      "arena": "KCI Smrt",
+      "arenaUrl": "https://krakenhockeyleague.com/arena/29",
+      "homeAway": "AWAY",
+      "opponent": "Hampton West Hockey Club",
+      "opponentUrl": "https://krakenhockeyleague.com/team/10185/home",
       "result": null,
       "score": null,
       "teamScore": null,
       "oppScore": null,
       "status": "Preview",
-      "gameId": "56616",
-      "gameUrl": "https://krakenhockeyleague.com/game/56616/preview"
+      "gameId": "56615",
+      "gameUrl": "https://krakenhockeyleague.com/game/56615/preview"
     }
   ]
 }
