@@ -1,28 +1,28 @@
 {
   "team": "Not Sure",
   "teamId": "13343",
-  "season": "Summer 2026 Playoffs",
+  "season": "Kraken Hockey League Fall/Winter 26/27",
   "source": "https://krakenhockeyleague.com/team/13343/home",
-  "updated": "2026-08-26T00:05:54.408Z",
+  "updated": "2026-09-04T00:28:36.424Z",
   "categories": [
     {
       "key": "goals",
       "label": "Goals",
       "leaders": [
         {
-          "number": "71",
-          "name": "Jordan Oroshiba",
-          "value": "2"
+          "number": "42",
+          "name": "Marc Anderson",
+          "value": "0"
         },
         {
-          "number": "65",
-          "name": "Blair McLaughlin",
-          "value": "1"
+          "number": "83",
+          "name": "Robee Aquino",
+          "value": "0"
         },
         {
-          "number": "23",
-          "name": "Andy Myers",
-          "value": "1"
+          "number": "3",
+          "name": "Malakai Bass",
+          "value": "0"
         }
       ]
     },
@@ -31,19 +31,19 @@
       "label": "Assists",
       "leaders": [
         {
-          "number": "65",
-          "name": "Blair McLaughlin",
-          "value": "2"
+          "number": "42",
+          "name": "Marc Anderson",
+          "value": "0"
         },
         {
-          "number": "16",
-          "name": "Ryan Benson",
-          "value": "2"
+          "number": "83",
+          "name": "Robee Aquino",
+          "value": "0"
         },
         {
-          "number": "23",
-          "name": "Andy Myers",
-          "value": "1"
+          "number": "3",
+          "name": "Malakai Bass",
+          "value": "0"
         }
       ]
     },
@@ -52,42 +52,26 @@
       "label": "Points",
       "leaders": [
         {
-          "number": "65",
-          "name": "Blair McLaughlin",
-          "value": "3"
+          "number": "42",
+          "name": "Marc Anderson",
+          "value": "0"
         },
         {
-          "number": "71",
-          "name": "Jordan Oroshiba",
-          "value": "2"
+          "number": "83",
+          "name": "Robee Aquino",
+          "value": "0"
         },
         {
-          "number": "23",
-          "name": "Andy Myers",
-          "value": "2"
+          "number": "3",
+          "name": "Malakai Bass",
+          "value": "0"
         }
       ]
     },
     {
       "key": "ppg",
       "label": "PPG",
-      "leaders": [
-        {
-          "number": "65",
-          "name": "Blair McLaughlin",
-          "value": "3.00"
-        },
-        {
-          "number": "16",
-          "name": "Ryan Benson",
-          "value": "2.00"
-        },
-        {
-          "number": "23",
-          "name": "Andy Myers",
-          "value": "2.00"
-        }
-      ]
+      "leaders": []
     },
     {
       "key": "gaa",
@@ -104,8 +88,8 @@
           "value": "0.00"
         },
         {
-          "number": "30",
-          "name": "Luis Quintana",
+          "number": "33",
+          "name": "John Heacock",
           "value": "0.00"
         }
       ]
@@ -125,8 +109,8 @@
           "value": "0"
         },
         {
-          "number": "30",
-          "name": "Luis Quintana",
+          "number": "33",
+          "name": "John Heacock",
           "value": "0"
         }
       ]
@@ -136,11 +120,6 @@
       "label": "Save%",
       "leaders": [
         {
-          "number": "33",
-          "name": "John Heacock",
-          "value": "88.6%"
-        },
-        {
           "number": "3",
           "name": "Lance Bushore",
           "value": "0.0%"
@@ -148,6 +127,11 @@
         {
           "number": "41",
           "name": "BRIAN CHACOSKY",
+          "value": "0.0%"
+        },
+        {
+          "number": "33",
+          "name": "John Heacock",
           "value": "0.0%"
         }
       ]
