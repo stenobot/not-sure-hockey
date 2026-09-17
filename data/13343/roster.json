@@ -3,6 +3,10 @@
   "teamId": "13343",
   "players": [
     {
+      "name": "Allen Lee",
+      "group": "players"
+    },
+    {
       "name": "Andy Myers",
       "group": "players"
     },
@@ -24,6 +28,10 @@
     },
     {
       "name": "Emily Sorg",
+      "group": "players"
+    },
+    {
+      "name": "Jason Soehnlein",
       "group": "players"
     },
     {
@@ -59,27 +67,15 @@
       "group": "goalies"
     },
     {
-      "name": "Allen Lee",
-      "group": "spares"
-    },
-    {
       "name": "Ben Savage",
       "group": "spares"
     },
     {
+      "name": "Danny Fuller",
+      "group": "spares"
+    },
+    {
       "name": "Eric Carnell",
-      "group": "spares"
-    },
-    {
-      "name": "Jason Soehnlein",
-      "group": "spares"
-    },
-    {
-      "name": "Julian Myers",
-      "group": "spares"
-    },
-    {
-      "name": "Katie Lantz",
       "group": "spares"
     },
     {
@@ -91,6 +87,6 @@
       "group": "spares"
     }
   ],
-  "source": "https://www.benchapp.com/roster?teamId=885515&seasonId=514831",
-  "updated": "2026-09-17T00:58:53.894Z"
+  "source": "https://www.benchapp.com/roster?teamId=885515&seasonId=531263",
+  "updated": "2026-09-17T01:10:29.553Z"
 }

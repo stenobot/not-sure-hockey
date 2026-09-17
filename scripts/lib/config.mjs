@@ -13,9 +13,9 @@ export const teams = [
       scheduleUrl:
         'https://www.benchapp.com/schedule',
       rosterUrl:
-        'https://www.benchapp.com/roster?teamId=885515&seasonId=514831',
+        'https://www.benchapp.com/roster?teamId=885515&seasonId=531263',
       teamId: '885515',
-      seasonId: '514831',
+      seasonId: '531263',
     },
   },
   { id: '9572', name: 'Not Sure', division: 'Division 5A' },
