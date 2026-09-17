@@ -1,28 +1,28 @@
 {
   "team": "Not Sure",
   "teamId": "9572",
-  "season": "Summer 2026 Playoffs",
+  "season": "Kraken Hockey League Fall/Winter 26/27",
   "source": "https://krakenhockeyleague.com/team/9572/schedule",
-  "updated": "2026-08-26T00:05:50.734Z",
+  "updated": "2026-09-17T00:58:14.967Z",
   "games": [
     {
       "num": 1,
-      "date": "2026-08-11",
-      "dateLabel": "Tue, Aug 11",
-      "time": "9:35 PM",
-      "datetime": "2026-08-11T21:35",
-      "arena": "LIC",
-      "arenaUrl": "https://krakenhockeyleague.com/arena/14",
+      "date": "2026-09-21",
+      "dateLabel": "Mon, Sep 21",
+      "time": "10:15 PM",
+      "datetime": "2026-09-21T22:15",
+      "arena": "OVA",
+      "arenaUrl": "https://krakenhockeyleague.com/arena/13",
       "homeAway": "AWAY",
-      "opponent": "WKUTP-5",
-      "opponentUrl": "https://krakenhockeyleague.com/team/674/home",
-      "result": "L",
-      "score": "10 - 2",
-      "teamScore": 2,
-      "oppScore": 10,
-      "status": "Final",
-      "gameId": "56598",
-      "gameUrl": "https://krakenhockeyleague.com/game/56598/summary"
+      "opponent": "Renegades",
+      "opponentUrl": "https://krakenhockeyleague.com/team/9278/home",
+      "result": null,
+      "score": null,
+      "teamScore": null,
+      "oppScore": null,
+      "status": "Preview",
+      "gameId": "56843",
+      "gameUrl": "https://krakenhockeyleague.com/game/56843/preview"
     }
   ]
 }
