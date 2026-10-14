@@ -90,9 +90,9 @@ async function waitOutChallenge(page, maxMs = 25000) {
   return !(await isChallenge(page));
 }
 
-// Read the displayed game's date from the deep-link detail page. The page lands
-// on the next upcoming game and shows an uppercase header like "SUN, JUN 28"
-// followed by "5:35 PM - 6:50 PM". Returns { date, datetime, label } or null.
+// Read the displayed game's date from the schedule/detail view. BenchApp shows a
+// weekday header like "Mon, Oct 19" (case can vary) and a separate time leaf like
+// "8:00 PM" (optionally "8:00 PM - 9:15 PM"). Returns { date, datetime, label } or null.
 async function getDisplayedGame(page) {
   return page.evaluate(() => {
     const MON = { JAN: '01', FEB: '02', MAR: '03', APR: '04', MAY: '05', JUN: '06',
@@ -100,10 +100,10 @@ async function getDisplayedGame(page) {
     const leaves = Array.from(document.querySelectorAll('div,span,h1,h2,h3,h4,p'))
       .filter((d) => d.children.length === 0);
 
-    const hdr = leaves.find((d) => /^[A-Z]{3},\s*[A-Z]{3}\s+\d{1,2}$/.test(d.textContent.trim()));
+    const hdr = leaves.find((d) => /^[A-Za-z]{3},\s*[A-Za-z]{3}\s+\d{1,2}$/.test(d.textContent.trim()));
     if (!hdr) return null;
-    const m = hdr.textContent.trim().match(/^([A-Z]{3}),\s*([A-Z]{3})\s+(\d{1,2})$/);
-    const mon = m && MON[m[2]];
+    const m = hdr.textContent.trim().match(/^([A-Za-z]{3}),\s*([A-Za-z]{3})\s+(\d{1,2})$/);
+    const mon = m && MON[m[2].toUpperCase()];
     if (!mon) return null;
     const day = String(+m[3]).padStart(2, '0');
 
@@ -118,7 +118,7 @@ async function getDisplayedGame(page) {
     }
 
     let datetime = `${date}T00:00`;
-    const timeLeaf = leaves.find((d) => /^\d{1,2}:\d{2}\s*(AM|PM)\s*-/i.test(d.textContent.trim()));
+    const timeLeaf = leaves.find((d) => /^\d{1,2}:\d{2}\s*(AM|PM)\b/i.test(d.textContent.trim()));
     const tm = timeLeaf && timeLeaf.textContent.trim().match(/^(\d{1,2}):(\d{2})\s*(AM|PM)/i);
     if (tm) {
       let h = +tm[1];
