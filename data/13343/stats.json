@@ -3,26 +3,26 @@
   "teamId": "13343",
   "season": "Kraken Hockey League Fall/Winter 26/27",
   "source": "https://krakenhockeyleague.com/team/13343/home",
-  "updated": "2026-09-19T15:29:27.261Z",
+  "updated": "2026-10-14T05:53:50.857Z",
   "categories": [
     {
       "key": "goals",
       "label": "Goals",
       "leaders": [
         {
-          "number": "42",
-          "name": "Marc Anderson",
-          "value": "0"
+          "number": "4",
+          "name": "Luis Quintana",
+          "value": "2"
+        },
+        {
+          "number": "27",
+          "name": "Jesse Cutler",
+          "value": "1"
         },
         {
           "number": "83",
-          "name": "Robee Aquino",
-          "value": "0"
-        },
-        {
-          "number": "3",
-          "name": "Malakai Bass",
-          "value": "0"
+          "name": "Dane Lantz",
+          "value": "1"
         }
       ]
     },
@@ -31,19 +31,19 @@
       "label": "Assists",
       "leaders": [
         {
-          "number": "42",
-          "name": "Marc Anderson",
-          "value": "0"
+          "number": "2",
+          "name": "Pword Kelly",
+          "value": "3"
         },
         {
-          "number": "83",
-          "name": "Robee Aquino",
-          "value": "0"
+          "number": "40",
+          "name": "Caitlin Gortze",
+          "value": "1"
         },
         {
-          "number": "3",
-          "name": "Malakai Bass",
-          "value": "0"
+          "number": "65",
+          "name": "Blair McLaughlin",
+          "value": "1"
         }
       ]
     },
@@ -52,26 +52,42 @@
       "label": "Points",
       "leaders": [
         {
-          "number": "42",
-          "name": "Marc Anderson",
-          "value": "0"
+          "number": "2",
+          "name": "Pword Kelly",
+          "value": "3"
         },
         {
-          "number": "83",
-          "name": "Robee Aquino",
-          "value": "0"
+          "number": "4",
+          "name": "Luis Quintana",
+          "value": "2"
         },
         {
-          "number": "3",
-          "name": "Malakai Bass",
-          "value": "0"
+          "number": "27",
+          "name": "Jesse Cutler",
+          "value": "1"
         }
       ]
     },
     {
       "key": "ppg",
       "label": "PPG",
-      "leaders": []
+      "leaders": [
+        {
+          "number": "2",
+          "name": "Pword Kelly",
+          "value": "3.00"
+        },
+        {
+          "number": "27",
+          "name": "Jesse Cutler",
+          "value": "1.00"
+        },
+        {
+          "number": "4",
+          "name": "Luis Quintana",
+          "value": "1.00"
+        }
+      ]
     },
     {
       "key": "gaa",
@@ -120,18 +136,18 @@
       "label": "Save%",
       "leaders": [
         {
+          "number": "35",
+          "name": "MARTA KAPOYOS",
+          "value": "88.9%"
+        },
+        {
+          "number": "20",
+          "name": "Nicole Alipio",
+          "value": "87.5%"
+        },
+        {
           "number": "3",
           "name": "Lance Bushore",
-          "value": "0.0%"
-        },
-        {
-          "number": "41",
-          "name": "BRIAN CHACOSKY",
-          "value": "0.0%"
-        },
-        {
-          "number": "33",
-          "name": "John Heacock",
           "value": "0.0%"
         }
       ]

@@ -79,7 +79,23 @@
       "group": "spares"
     },
     {
+      "name": "Jamie MacArthur",
+      "group": "spares"
+    },
+    {
+      "name": "Katie Lantz",
+      "group": "spares"
+    },
+    {
+      "name": "Kevin Tice",
+      "group": "spares"
+    },
+    {
       "name": "Kraig Gratiot",
+      "group": "spares"
+    },
+    {
+      "name": "Monell Schroeder",
       "group": "spares"
     },
     {
@@ -88,5 +104,5 @@
     }
   ],
   "source": "https://www.benchapp.com/roster?teamId=885515&seasonId=531263",
-  "updated": "2026-09-19T15:30:11.608Z"
+  "updated": "2026-10-14T05:55:06.774Z"
 }

@@ -3,26 +3,26 @@
   "teamId": "9572",
   "season": "Kraken Hockey League Fall/Winter 26/27",
   "source": "https://krakenhockeyleague.com/team/9572/home",
-  "updated": "2026-09-19T15:29:27.900Z",
+  "updated": "2026-10-14T05:53:51.499Z",
   "categories": [
     {
       "key": "goals",
       "label": "Goals",
       "leaders": [
         {
-          "number": "42",
-          "name": "Marc Anderson",
-          "value": "0"
+          "number": "93",
+          "name": "Matt Mrozinski",
+          "value": "7"
         },
         {
-          "number": "10",
-          "name": "Alex Borromeo",
-          "value": "0"
+          "number": "17",
+          "name": "Colin McNally",
+          "value": "5"
         },
         {
-          "number": "6",
-          "name": "Phil Burke",
-          "value": "0"
+          "number": "91",
+          "name": "Sooyeol Lee",
+          "value": "3"
         }
       ]
     },
@@ -31,19 +31,19 @@
       "label": "Assists",
       "leaders": [
         {
+          "number": "14",
+          "name": "Kevin Schnablegger",
+          "value": "5"
+        },
+        {
+          "number": "91",
+          "name": "Sooyeol Lee",
+          "value": "4"
+        },
+        {
           "number": "42",
           "name": "Marc Anderson",
-          "value": "0"
-        },
-        {
-          "number": "10",
-          "name": "Alex Borromeo",
-          "value": "0"
-        },
-        {
-          "number": "6",
-          "name": "Phil Burke",
-          "value": "0"
+          "value": "3"
         }
       ]
     },
@@ -52,26 +52,42 @@
       "label": "Points",
       "leaders": [
         {
-          "number": "42",
-          "name": "Marc Anderson",
-          "value": "0"
+          "number": "93",
+          "name": "Matt Mrozinski",
+          "value": "9"
         },
         {
-          "number": "10",
-          "name": "Alex Borromeo",
-          "value": "0"
+          "number": "17",
+          "name": "Colin McNally",
+          "value": "7"
         },
         {
-          "number": "6",
-          "name": "Phil Burke",
-          "value": "0"
+          "number": "91",
+          "name": "Sooyeol Lee",
+          "value": "7"
         }
       ]
     },
     {
       "key": "ppg",
       "label": "PPG",
-      "leaders": []
+      "leaders": [
+        {
+          "number": "91",
+          "name": "Sooyeol Lee",
+          "value": "2.33"
+        },
+        {
+          "number": "93",
+          "name": "Matt Mrozinski",
+          "value": "2.25"
+        },
+        {
+          "number": "66",
+          "name": "Shaina Johl",
+          "value": "2.00"
+        }
+      ]
     },
     {
       "key": "gaa",
@@ -120,18 +136,18 @@
       "label": "Save%",
       "leaders": [
         {
+          "number": "30",
+          "name": "Dakota Howard",
+          "value": "94.3%"
+        },
+        {
+          "number": "5",
+          "name": "Paul Poirier",
+          "value": "76.4%"
+        },
+        {
           "number": "40",
           "name": "Matt Campbell",
-          "value": "0.0%"
-        },
-        {
-          "number": "37",
-          "name": "Paul Casper",
-          "value": "0.0%"
-        },
-        {
-          "number": "41",
-          "name": "Bryan Chacosky",
           "value": "0.0%"
         }
       ]
