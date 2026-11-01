@@ -71,6 +71,10 @@
       "group": "spares"
     },
     {
+      "name": "Brad Carmichael",
+      "group": "spares"
+    },
+    {
       "name": "Danny Fuller",
       "group": "spares"
     },
@@ -104,5 +108,5 @@
     }
   ],
   "source": "https://www.benchapp.com/roster?teamId=885515&seasonId=531263",
-  "updated": "2026-10-14T06:05:10.614Z"
+  "updated": "2026-11-01T04:41:02.689Z"
 }

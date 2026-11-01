@@ -3,7 +3,7 @@
   "teamId": "9572",
   "season": "Kraken Hockey League Fall/Winter 26/27",
   "source": "https://krakenhockeyleague.com/team/9572/home",
-  "updated": "2026-10-14T06:04:00.548Z",
+  "updated": "2026-11-01T04:39:51.118Z",
   "categories": [
     {
       "key": "goals",
@@ -12,7 +12,7 @@
         {
           "number": "93",
           "name": "Matt Mrozinski",
-          "value": "7"
+          "value": "8"
         },
         {
           "number": "17",
@@ -22,7 +22,7 @@
         {
           "number": "91",
           "name": "Sooyeol Lee",
-          "value": "3"
+          "value": "4"
         }
       ]
     },
@@ -31,19 +31,19 @@
       "label": "Assists",
       "leaders": [
         {
+          "number": "91",
+          "name": "Sooyeol Lee",
+          "value": "5"
+        },
+        {
           "number": "14",
           "name": "Kevin Schnablegger",
           "value": "5"
         },
         {
-          "number": "91",
-          "name": "Sooyeol Lee",
+          "number": "93",
+          "name": "Matt Mrozinski",
           "value": "4"
-        },
-        {
-          "number": "42",
-          "name": "Marc Anderson",
-          "value": "3"
         }
       ]
     },
@@ -54,16 +54,16 @@
         {
           "number": "93",
           "name": "Matt Mrozinski",
+          "value": "12"
+        },
+        {
+          "number": "91",
+          "name": "Sooyeol Lee",
           "value": "9"
         },
         {
           "number": "17",
           "name": "Colin McNally",
-          "value": "7"
-        },
-        {
-          "number": "91",
-          "name": "Sooyeol Lee",
           "value": "7"
         }
       ]
@@ -73,13 +73,13 @@
       "label": "PPG",
       "leaders": [
         {
-          "number": "91",
-          "name": "Sooyeol Lee",
-          "value": "2.33"
-        },
-        {
           "number": "93",
           "name": "Matt Mrozinski",
+          "value": "2.40"
+        },
+        {
+          "number": "91",
+          "name": "Sooyeol Lee",
           "value": "2.25"
         },
         {
@@ -99,13 +99,13 @@
           "value": "0.00"
         },
         {
-          "number": "37",
-          "name": "Paul Casper",
+          "number": "41",
+          "name": "Bryan Chacosky",
           "value": "0.00"
         },
         {
-          "number": "41",
-          "name": "Bryan Chacosky",
+          "number": "43",
+          "name": "Eoghan Kyne",
           "value": "0.00"
         }
       ]
@@ -120,13 +120,13 @@
           "value": "0"
         },
         {
-          "number": "37",
-          "name": "Paul Casper",
+          "number": "41",
+          "name": "Bryan Chacosky",
           "value": "0"
         },
         {
-          "number": "41",
-          "name": "Bryan Chacosky",
+          "number": "43",
+          "name": "Eoghan Kyne",
           "value": "0"
         }
       ]
@@ -141,14 +141,14 @@
           "value": "94.3%"
         },
         {
+          "number": "37",
+          "name": "Paul Casper",
+          "value": "80.0%"
+        },
+        {
           "number": "5",
           "name": "Paul Poirier",
           "value": "76.4%"
-        },
-        {
-          "number": "40",
-          "name": "Matt Campbell",
-          "value": "0.0%"
         }
       ]
     }

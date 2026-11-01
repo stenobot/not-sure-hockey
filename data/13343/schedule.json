@@ -3,7 +3,7 @@
   "teamId": "13343",
   "season": "Kraken Hockey League Fall/Winter 26/27",
   "source": "https://krakenhockeyleague.com/team/13343/schedule",
-  "updated": "2026-10-14T06:03:55.929Z",
+  "updated": "2026-11-01T04:39:46.258Z",
   "games": [
     {
       "num": 1,
@@ -54,13 +54,13 @@
       "homeAway": "HOME",
       "opponent": "Blades",
       "opponentUrl": "https://krakenhockeyleague.com/team/10156/home",
-      "result": null,
-      "score": null,
-      "teamScore": null,
-      "oppScore": null,
-      "status": "Preview",
-      "gameId": "56984",
-      "gameUrl": "https://krakenhockeyleague.com/game/56984/preview"
+      "result": "L",
+      "score": "4 - 2",
+      "teamScore": 2,
+      "oppScore": 4,
+      "status": null,
+      "gameId": null,
+      "gameUrl": null
     },
     {
       "num": 4,
@@ -73,13 +73,13 @@
       "homeAway": "HOME",
       "opponent": "Barrel Aged Brewzers",
       "opponentUrl": "https://krakenhockeyleague.com/team/20721/home",
-      "result": null,
-      "score": null,
-      "teamScore": null,
-      "oppScore": null,
-      "status": "Preview",
+      "result": "L",
+      "score": "3 - 1",
+      "teamScore": 1,
+      "oppScore": 3,
+      "status": "Final",
       "gameId": "57076",
-      "gameUrl": "https://krakenhockeyleague.com/game/57076/preview"
+      "gameUrl": "https://krakenhockeyleague.com/game/57076/summary"
     },
     {
       "num": 5,
@@ -92,13 +92,13 @@
       "homeAway": "HOME",
       "opponent": "Trash Pandas",
       "opponentUrl": "https://krakenhockeyleague.com/team/7794/home",
-      "result": null,
-      "score": null,
-      "teamScore": null,
-      "oppScore": null,
-      "status": "Preview",
+      "result": "L",
+      "score": "6 - 1",
+      "teamScore": 1,
+      "oppScore": 6,
+      "status": "Final",
       "gameId": "57202",
-      "gameUrl": "https://krakenhockeyleague.com/game/57202/preview"
+      "gameUrl": "https://krakenhockeyleague.com/game/57202/summary"
     },
     {
       "num": 6,
@@ -111,13 +111,51 @@
       "homeAway": "AWAY",
       "opponent": "Hampton West Hockey Club",
       "opponentUrl": "https://krakenhockeyleague.com/team/10185/home",
+      "result": "W",
+      "score": "4 - 2",
+      "teamScore": 4,
+      "oppScore": 2,
+      "status": null,
+      "gameId": null,
+      "gameUrl": null
+    },
+    {
+      "num": 7,
+      "date": "2026-11-01",
+      "dateLabel": "Sun, Nov 1",
+      "time": "10:30 PM",
+      "datetime": "2026-11-01T22:30",
+      "arena": "KCI Smrt",
+      "arenaUrl": "https://krakenhockeyleague.com/arena/29",
+      "homeAway": "HOME",
+      "opponent": "Seattle Seals",
+      "opponentUrl": "https://krakenhockeyleague.com/team/14167/home",
       "result": null,
       "score": null,
       "teamScore": null,
       "oppScore": null,
       "status": "Preview",
-      "gameId": "57255",
-      "gameUrl": "https://krakenhockeyleague.com/game/57255/preview"
+      "gameId": "57336",
+      "gameUrl": "https://krakenhockeyleague.com/game/57336/preview"
+    },
+    {
+      "num": 8,
+      "date": "2026-11-15",
+      "dateLabel": "Sun, Nov 15",
+      "time": "3:55 PM",
+      "datetime": "2026-11-15T15:55",
+      "arena": "KCI Star",
+      "arenaUrl": "https://krakenhockeyleague.com/arena/28",
+      "homeAway": "AWAY",
+      "opponent": "Hampton West Hockey Club",
+      "opponentUrl": "https://krakenhockeyleague.com/team/10185/home",
+      "result": null,
+      "score": null,
+      "teamScore": null,
+      "oppScore": null,
+      "status": "Preview",
+      "gameId": "57452",
+      "gameUrl": "https://krakenhockeyleague.com/game/57452/preview"
     }
   ]
 }

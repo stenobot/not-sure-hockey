@@ -3,12 +3,17 @@
   "teamId": "13343",
   "season": "Kraken Hockey League Fall/Winter 26/27",
   "source": "https://krakenhockeyleague.com/team/13343/home",
-  "updated": "2026-10-14T06:04:00.029Z",
+  "updated": "2026-11-01T04:39:50.536Z",
   "categories": [
     {
       "key": "goals",
       "label": "Goals",
       "leaders": [
+        {
+          "number": "65",
+          "name": "Blair McLaughlin",
+          "value": "2"
+        },
         {
           "number": "4",
           "name": "Luis Quintana",
@@ -17,11 +22,6 @@
         {
           "number": "27",
           "name": "Jesse Cutler",
-          "value": "1"
-        },
-        {
-          "number": "83",
-          "name": "Dane Lantz",
           "value": "1"
         }
       ]
@@ -36,13 +36,13 @@
           "value": "3"
         },
         {
-          "number": "40",
-          "name": "Caitlin Gortze",
+          "number": "65",
+          "name": "Blair McLaughlin",
           "value": "1"
         },
         {
-          "number": "65",
-          "name": "Blair McLaughlin",
+          "number": "27",
+          "name": "Jesse Cutler",
           "value": "1"
         }
       ]
@@ -52,6 +52,11 @@
       "label": "Points",
       "leaders": [
         {
+          "number": "65",
+          "name": "Blair McLaughlin",
+          "value": "3"
+        },
+        {
           "number": "2",
           "name": "Pword Kelly",
           "value": "3"
@@ -60,11 +65,6 @@
           "number": "4",
           "name": "Luis Quintana",
           "value": "2"
-        },
-        {
-          "number": "27",
-          "name": "Jesse Cutler",
-          "value": "1"
         }
       ]
     },
@@ -78,8 +78,8 @@
           "value": "3.00"
         },
         {
-          "number": "27",
-          "name": "Jesse Cutler",
+          "number": "74",
+          "name": "Jamie MacArthur",
           "value": "1.00"
         },
         {
@@ -146,9 +146,9 @@
           "value": "87.5%"
         },
         {
-          "number": "3",
-          "name": "Lance Bushore",
-          "value": "0.0%"
+          "number": "30",
+          "name": "Luis Quintana",
+          "value": "83.6%"
         }
       ]
     }
