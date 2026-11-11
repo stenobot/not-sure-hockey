@@ -3,25 +3,25 @@
   "teamId": "9572",
   "season": "Kraken Hockey League Fall/Winter 26/27",
   "source": "https://krakenhockeyleague.com/team/9572/home",
-  "updated": "2026-11-01T04:39:51.118Z",
+  "updated": "2026-11-11T16:15:00.840Z",
   "categories": [
     {
       "key": "goals",
       "label": "Goals",
       "leaders": [
         {
+          "number": "17",
+          "name": "Colin McNally",
+          "value": "9"
+        },
+        {
           "number": "93",
           "name": "Matt Mrozinski",
           "value": "8"
         },
         {
-          "number": "17",
-          "name": "Colin McNally",
-          "value": "5"
-        },
-        {
-          "number": "91",
-          "name": "Sooyeol Lee",
+          "number": "14",
+          "name": "Kevin Schnablegger",
           "value": "4"
         }
       ]
@@ -31,19 +31,19 @@
       "label": "Assists",
       "leaders": [
         {
-          "number": "91",
-          "name": "Sooyeol Lee",
-          "value": "5"
+          "number": "7",
+          "name": "Eric Carnell",
+          "value": "8"
         },
         {
           "number": "14",
           "name": "Kevin Schnablegger",
-          "value": "5"
+          "value": "7"
         },
         {
-          "number": "93",
-          "name": "Matt Mrozinski",
-          "value": "4"
+          "number": "17",
+          "name": "Colin McNally",
+          "value": "5"
         }
       ]
     },
@@ -52,19 +52,19 @@
       "label": "Points",
       "leaders": [
         {
+          "number": "17",
+          "name": "Colin McNally",
+          "value": "14"
+        },
+        {
           "number": "93",
           "name": "Matt Mrozinski",
           "value": "12"
         },
         {
-          "number": "91",
-          "name": "Sooyeol Lee",
-          "value": "9"
-        },
-        {
-          "number": "17",
-          "name": "Colin McNally",
-          "value": "7"
+          "number": "14",
+          "name": "Kevin Schnablegger",
+          "value": "11"
         }
       ]
     },
@@ -73,14 +73,14 @@
       "label": "PPG",
       "leaders": [
         {
-          "number": "93",
-          "name": "Matt Mrozinski",
-          "value": "2.40"
+          "number": "17",
+          "name": "Colin McNally",
+          "value": "2.33"
         },
         {
-          "number": "91",
-          "name": "Sooyeol Lee",
-          "value": "2.25"
+          "number": "14",
+          "name": "Kevin Schnablegger",
+          "value": "2.20"
         },
         {
           "number": "66",
@@ -148,7 +148,7 @@
         {
           "number": "5",
           "name": "Paul Poirier",
-          "value": "76.4%"
+          "value": "76.3%"
         }
       ]
     }

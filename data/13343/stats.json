@@ -3,12 +3,17 @@
   "teamId": "13343",
   "season": "Kraken Hockey League Fall/Winter 26/27",
   "source": "https://krakenhockeyleague.com/team/13343/home",
-  "updated": "2026-11-01T04:39:50.536Z",
+  "updated": "2026-11-11T16:14:59.830Z",
   "categories": [
     {
       "key": "goals",
       "label": "Goals",
       "leaders": [
+        {
+          "number": "27",
+          "name": "Jesse Cutler",
+          "value": "2"
+        },
         {
           "number": "65",
           "name": "Blair McLaughlin",
@@ -18,11 +23,6 @@
           "number": "4",
           "name": "Luis Quintana",
           "value": "2"
-        },
-        {
-          "number": "27",
-          "name": "Jesse Cutler",
-          "value": "1"
         }
       ]
     },
@@ -36,13 +36,13 @@
           "value": "3"
         },
         {
-          "number": "65",
-          "name": "Blair McLaughlin",
+          "number": "27",
+          "name": "Jesse Cutler",
           "value": "1"
         },
         {
-          "number": "27",
-          "name": "Jesse Cutler",
+          "number": "65",
+          "name": "Blair McLaughlin",
           "value": "1"
         }
       ]
@@ -52,6 +52,11 @@
       "label": "Points",
       "leaders": [
         {
+          "number": "27",
+          "name": "Jesse Cutler",
+          "value": "3"
+        },
+        {
           "number": "65",
           "name": "Blair McLaughlin",
           "value": "3"
@@ -60,11 +65,6 @@
           "number": "2",
           "name": "Pword Kelly",
           "value": "3"
-        },
-        {
-          "number": "4",
-          "name": "Luis Quintana",
-          "value": "2"
         }
       ]
     },
@@ -75,7 +75,7 @@
         {
           "number": "2",
           "name": "Pword Kelly",
-          "value": "3.00"
+          "value": "1.50"
         },
         {
           "number": "74",
@@ -83,8 +83,8 @@
           "value": "1.00"
         },
         {
-          "number": "4",
-          "name": "Luis Quintana",
+          "number": "74",
+          "name": "Monell Schroeder",
           "value": "1.00"
         }
       ]
@@ -136,14 +136,14 @@
       "label": "Save%",
       "leaders": [
         {
+          "number": "29",
+          "name": "Zach Stacy",
+          "value": "92.3%"
+        },
+        {
           "number": "35",
           "name": "MARTA KAPOYOS",
           "value": "88.9%"
-        },
-        {
-          "number": "20",
-          "name": "Nicole Alipio",
-          "value": "87.5%"
         },
         {
           "number": "30",

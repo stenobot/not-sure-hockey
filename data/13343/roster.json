@@ -31,10 +31,6 @@
       "group": "players"
     },
     {
-      "name": "Jason Soehnlein",
-      "group": "players"
-    },
-    {
       "name": "Jesse Cutler",
       "group": "players"
     },
@@ -87,6 +83,10 @@
       "group": "spares"
     },
     {
+      "name": "Jason Soehnlein",
+      "group": "spares"
+    },
+    {
       "name": "Katie Lantz",
       "group": "spares"
     },
@@ -108,5 +108,5 @@
     }
   ],
   "source": "https://www.benchapp.com/roster?teamId=885515&seasonId=531263",
-  "updated": "2026-11-01T04:41:02.689Z"
+  "updated": "2026-11-11T16:16:33.851Z"
 }
