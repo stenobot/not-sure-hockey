@@ -1,6 +1,7 @@
 // Scrapes each team's "Team Leaders" section from /team/<teamId>/home into
 // data/<teamId>/stats.json. Each category (Goals, Assists, Points, GAA, GA,
-// Save%) lists the top players as { number, name, value }.
+// Save%) lists the top players as { number, name, value }. PPG and goalie
+// leaders come from /team/<teamId>/stats so games played can be checked.
 
 import { teams, config } from './lib/config.mjs';
 import { fetchDom, clean, num, writeJson, nowIso, runScraper } from './lib/parse.mjs';
@@ -54,13 +55,10 @@ function leadersFor($, label) {
 }
 
 // PPG (points per game) isn't a "Team Leaders" category on the team home page —
-// it's derived from the per-player table on /team/<id>/stats (PTS / GP). Fetch
-// that page, compute PPG for each skater, and return the top leaders. Sorted by
+// it's derived from the per-player table on /team/<id>/stats (PTS / GP).
+// Compute PPG for each skater and return the top leaders. Sorted by
 // PPG desc, ties broken by fewer games then more points.
-async function ppgLeadersFor(team) {
-  const url = `${config.baseUrl}/team/${team.id}/stats`;
-  const $ = await fetchDom(url);
-
+function ppgLeadersFor($) {
   // The skater table is the one whose header row includes both "Player" and "PTS".
   let $table = null;
   $('table').each((_, table) => {
@@ -107,6 +105,39 @@ async function ppgLeadersFor(team) {
   }));
 }
 
+function goalieLeadersFor($, key) {
+  const column = { ga: 'GA', gaa: 'GAA', savePct: 'SV%' }[key];
+  const players = [];
+  $('table').each((_, table) => {
+    const $rows = $(table).find('tr');
+    const headers = $rows.first().find('td, th')
+      .map((__, c) => clean($(c).text())).get();
+    if (!['Player', 'GP', 'GA', 'GAA', 'SV%'].every((h) => headers.includes(h))) return;
+
+    $rows.slice(1).each((__, tr) => {
+      const cells = $(tr).find('td, th').map((___, c) => clean($(c).text())).get();
+      const gp = Number(num(cells[headers.indexOf('GP')])) || 0;
+      const name = cells[headers.indexOf('Player')];
+      const rawValue = cells[headers.indexOf(column)];
+      const value = Number(num(rawValue));
+      if (gp <= 0 || !name || !rawValue || !Number.isFinite(value)) return;
+      players.push({
+        number: (cells[0] || '').replace(/^#/, '') || null,
+        name,
+        value,
+      });
+    });
+  });
+
+  players.sort((a, b) => key === 'savePct' ? b.value - a.value : a.value - b.value);
+  return players.slice(0, MAX_LEADERS).map((p) => ({
+    number: p.number,
+    name: p.name,
+    value: key === 'savePct' ? `${(p.value * 100).toFixed(1)}%`
+      : key === 'gaa' ? p.value.toFixed(2) : String(p.value),
+  }));
+}
+
 async function scrapeTeam(team) {
   const url = `${config.baseUrl}/team/${team.id}/home`;
   const $ = await fetchDom(url);
@@ -114,17 +145,19 @@ async function scrapeTeam(team) {
   const categories = CATEGORIES.map(({ key, label }) => ({
     key,
     label,
-    leaders: leadersFor($, label),
+    leaders: ['ppg', 'gaa', 'ga', 'savePct'].includes(key) ? [] : leadersFor($, label),
   }));
 
-  // PPG comes from the per-player stats page, not the home-page Team Leaders.
-  const ppgCat = categories.find((c) => c.key === 'ppg');
-  if (ppgCat) {
-    try {
-      ppgCat.leaders = await ppgLeadersFor(team);
-    } catch (err) {
-      console.warn(`[${team.id}] PPG leaders unavailable: ${err.message}`);
+  try {
+    const $stats = await fetchDom(`${config.baseUrl}/team/${team.id}/stats`);
+    for (const cat of categories) {
+      if (cat.key === 'ppg') cat.leaders = ppgLeadersFor($stats);
+      else if (['gaa', 'ga', 'savePct'].includes(cat.key)) {
+        cat.leaders = goalieLeadersFor($stats, cat.key);
+      }
     }
+  } catch (err) {
+    console.warn(`[${team.id}] PPG and goalie leaders unavailable: ${err.message}`);
   }
 
   const season = clean($('#btnGroupDrop1').first().text()) || null;

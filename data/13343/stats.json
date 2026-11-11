@@ -3,7 +3,7 @@
   "teamId": "13343",
   "season": "Kraken Hockey League Fall/Winter 26/27",
   "source": "https://krakenhockeyleague.com/team/13343/home",
-  "updated": "2026-11-11T16:14:59.830Z",
+  "updated": "2026-11-11T16:22:51.673Z",
   "categories": [
     {
       "key": "goals",
@@ -94,19 +94,19 @@
       "label": "GAA",
       "leaders": [
         {
-          "number": "3",
-          "name": "Lance Bushore",
-          "value": "0.00"
+          "number": "35",
+          "name": "MARTA KAPOYOS",
+          "value": "2.00"
         },
         {
-          "number": "41",
-          "name": "BRIAN CHACOSKY",
-          "value": "0.00"
+          "number": "29",
+          "name": "Zach Stacy",
+          "value": "2.00"
         },
         {
-          "number": "33",
-          "name": "John Heacock",
-          "value": "0.00"
+          "number": "20",
+          "name": "Nicole Alipio",
+          "value": "4.00"
         }
       ]
     },
@@ -115,19 +115,19 @@
       "label": "GA",
       "leaders": [
         {
-          "number": "3",
-          "name": "Lance Bushore",
-          "value": "0"
+          "number": "35",
+          "name": "MARTA KAPOYOS",
+          "value": "2"
         },
         {
-          "number": "41",
-          "name": "BRIAN CHACOSKY",
-          "value": "0"
+          "number": "29",
+          "name": "Zach Stacy",
+          "value": "2"
         },
         {
-          "number": "33",
-          "name": "John Heacock",
-          "value": "0"
+          "number": "20",
+          "name": "Nicole Alipio",
+          "value": "8"
         }
       ]
     },

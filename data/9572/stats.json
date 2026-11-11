@@ -3,7 +3,7 @@
   "teamId": "9572",
   "season": "Kraken Hockey League Fall/Winter 26/27",
   "source": "https://krakenhockeyleague.com/team/9572/home",
-  "updated": "2026-11-11T16:15:00.840Z",
+  "updated": "2026-11-11T16:22:52.319Z",
   "categories": [
     {
       "key": "goals",
@@ -94,19 +94,19 @@
       "label": "GAA",
       "leaders": [
         {
-          "number": "40",
-          "name": "Matt Campbell",
-          "value": "0.00"
+          "number": "30",
+          "name": "Dakota Howard",
+          "value": "2.00"
         },
         {
-          "number": "41",
-          "name": "Bryan Chacosky",
-          "value": "0.00"
+          "number": "37",
+          "name": "Paul Casper",
+          "value": "6.00"
         },
         {
-          "number": "43",
-          "name": "Eoghan Kyne",
-          "value": "0.00"
+          "number": "5",
+          "name": "Paul Poirier",
+          "value": "7.60"
         }
       ]
     },
@@ -115,19 +115,19 @@
       "label": "GA",
       "leaders": [
         {
-          "number": "40",
-          "name": "Matt Campbell",
-          "value": "0"
+          "number": "30",
+          "name": "Dakota Howard",
+          "value": "2"
         },
         {
-          "number": "41",
-          "name": "Bryan Chacosky",
-          "value": "0"
+          "number": "37",
+          "name": "Paul Casper",
+          "value": "6"
         },
         {
-          "number": "43",
-          "name": "Eoghan Kyne",
-          "value": "0"
+          "number": "5",
+          "name": "Paul Poirier",
+          "value": "38"
         }
       ]
     },
