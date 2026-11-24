@@ -3,7 +3,7 @@
   "teamId": "13343",
   "season": "Kraken Hockey League Fall/Winter 26/27",
   "source": "https://krakenhockeyleague.com/team/13343/home",
-  "updated": "2026-11-11T16:22:51.673Z",
+  "updated": "2026-11-24T18:21:54.099Z",
   "categories": [
     {
       "key": "goals",
@@ -12,7 +12,7 @@
         {
           "number": "27",
           "name": "Jesse Cutler",
-          "value": "2"
+          "value": "3"
         },
         {
           "number": "65",
@@ -33,17 +33,17 @@
         {
           "number": "2",
           "name": "Pword Kelly",
-          "value": "3"
-        },
-        {
-          "number": "27",
-          "name": "Jesse Cutler",
-          "value": "1"
+          "value": "4"
         },
         {
           "number": "65",
           "name": "Blair McLaughlin",
-          "value": "1"
+          "value": "2"
+        },
+        {
+          "number": "74",
+          "name": "Monell Schroeder",
+          "value": "2"
         }
       ]
     },
@@ -54,17 +54,17 @@
         {
           "number": "27",
           "name": "Jesse Cutler",
-          "value": "3"
+          "value": "4"
         },
         {
           "number": "65",
           "name": "Blair McLaughlin",
-          "value": "3"
+          "value": "4"
         },
         {
           "number": "2",
           "name": "Pword Kelly",
-          "value": "3"
+          "value": "4"
         }
       ]
     },
@@ -73,13 +73,13 @@
       "label": "PPG",
       "leaders": [
         {
-          "number": "2",
-          "name": "Pword Kelly",
-          "value": "1.50"
-        },
-        {
           "number": "74",
           "name": "Jamie MacArthur",
+          "value": "1.00"
+        },
+        {
+          "number": "22",
+          "name": "Jason Soehnlein",
           "value": "1.00"
         },
         {
@@ -115,19 +115,19 @@
       "label": "GA",
       "leaders": [
         {
-          "number": "35",
-          "name": "MARTA KAPOYOS",
-          "value": "2"
-        },
-        {
           "number": "29",
           "name": "Zach Stacy",
           "value": "2"
         },
         {
-          "number": "20",
-          "name": "Nicole Alipio",
-          "value": "8"
+          "number": "35",
+          "name": "MARTA KAPOYOS",
+          "value": "4"
+        },
+        {
+          "number": "30",
+          "name": "Luis Quintana",
+          "value": "9"
         }
       ]
     },

@@ -3,7 +3,7 @@
   "teamId": "9572",
   "season": "Kraken Hockey League Fall/Winter 26/27",
   "source": "https://krakenhockeyleague.com/team/9572/schedule",
-  "updated": "2026-11-11T16:14:54.776Z",
+  "updated": "2026-11-24T18:21:49.765Z",
   "games": [
     {
       "num": 1,
@@ -149,13 +149,13 @@
       "homeAway": "AWAY",
       "opponent": "Brewzers OGB",
       "opponentUrl": "https://krakenhockeyleague.com/team/19444/home",
-      "result": null,
-      "score": null,
-      "teamScore": null,
-      "oppScore": null,
-      "status": "Preview",
+      "result": "L",
+      "score": "9 - 4",
+      "teamScore": 4,
+      "oppScore": 9,
+      "status": "Final",
       "gameId": "57496",
-      "gameUrl": "https://krakenhockeyleague.com/game/57496/preview"
+      "gameUrl": "https://krakenhockeyleague.com/game/57496/summary"
     },
     {
       "num": 9,
@@ -168,13 +168,13 @@
       "homeAway": "AWAY",
       "opponent": "Lumberjacks",
       "opponentUrl": "https://krakenhockeyleague.com/team/1890/home",
-      "result": null,
-      "score": null,
-      "teamScore": null,
-      "oppScore": null,
-      "status": "Preview",
-      "gameId": "57545",
-      "gameUrl": "https://krakenhockeyleague.com/game/57545/preview"
+      "result": "L",
+      "score": "1 - 0",
+      "teamScore": 0,
+      "oppScore": 1,
+      "status": null,
+      "gameId": null,
+      "gameUrl": null
     },
     {
       "num": 10,

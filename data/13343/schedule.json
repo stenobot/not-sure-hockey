@@ -3,7 +3,7 @@
   "teamId": "13343",
   "season": "Kraken Hockey League Fall/Winter 26/27",
   "source": "https://krakenhockeyleague.com/team/13343/schedule",
-  "updated": "2026-11-11T16:14:54.398Z",
+  "updated": "2026-11-24T18:21:49.558Z",
   "games": [
     {
       "num": 1,
@@ -149,13 +149,13 @@
       "homeAway": "AWAY",
       "opponent": "Hampton West Hockey Club",
       "opponentUrl": "https://krakenhockeyleague.com/team/10185/home",
-      "result": null,
-      "score": null,
-      "teamScore": null,
-      "oppScore": null,
-      "status": "Preview",
+      "result": "L",
+      "score": "4 - 3",
+      "teamScore": 3,
+      "oppScore": 4,
+      "status": "Final",
       "gameId": "57452",
-      "gameUrl": "https://krakenhockeyleague.com/game/57452/preview"
+      "gameUrl": "https://krakenhockeyleague.com/game/57452/summary"
     },
     {
       "num": 9,
@@ -168,13 +168,13 @@
       "homeAway": "AWAY",
       "opponent": "Fluffy Bunnies",
       "opponentUrl": "https://krakenhockeyleague.com/team/14166/home",
-      "result": null,
-      "score": null,
-      "teamScore": null,
-      "oppScore": null,
-      "status": "Preview",
+      "result": "L",
+      "score": "2 - 1",
+      "teamScore": 1,
+      "oppScore": 2,
+      "status": "Final",
       "gameId": "57540",
-      "gameUrl": "https://krakenhockeyleague.com/game/57540/preview"
+      "gameUrl": "https://krakenhockeyleague.com/game/57540/summary"
     },
     {
       "num": 10,

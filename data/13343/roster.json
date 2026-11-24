@@ -31,6 +31,10 @@
       "group": "players"
     },
     {
+      "name": "Jason Soehnlein",
+      "group": "players"
+    },
+    {
       "name": "Jesse Cutler",
       "group": "players"
     },
@@ -63,6 +67,10 @@
       "group": "goalies"
     },
     {
+      "name": "Nicole Alipio",
+      "group": "goalies"
+    },
+    {
       "name": "Ben Savage",
       "group": "spares"
     },
@@ -80,10 +88,6 @@
     },
     {
       "name": "Jamie MacArthur",
-      "group": "spares"
-    },
-    {
-      "name": "Jason Soehnlein",
       "group": "spares"
     },
     {
@@ -108,5 +112,5 @@
     }
   ],
   "source": "https://www.benchapp.com/roster?teamId=885515&seasonId=531263",
-  "updated": "2026-11-11T16:16:33.851Z"
+  "updated": "2026-11-24T18:23:08.596Z"
 }

@@ -3,21 +3,21 @@
   "teamId": "9572",
   "season": "Kraken Hockey League Fall/Winter 26/27",
   "source": "https://krakenhockeyleague.com/team/9572/home",
-  "updated": "2026-11-11T16:22:52.319Z",
+  "updated": "2026-11-24T18:21:54.520Z",
   "categories": [
     {
       "key": "goals",
       "label": "Goals",
       "leaders": [
         {
+          "number": "93",
+          "name": "Matt Mrozinski",
+          "value": "10"
+        },
+        {
           "number": "17",
           "name": "Colin McNally",
           "value": "9"
-        },
-        {
-          "number": "93",
-          "name": "Matt Mrozinski",
-          "value": "8"
         },
         {
           "number": "14",
@@ -33,7 +33,7 @@
         {
           "number": "7",
           "name": "Eric Carnell",
-          "value": "8"
+          "value": "9"
         },
         {
           "number": "14",
@@ -41,8 +41,8 @@
           "value": "7"
         },
         {
-          "number": "17",
-          "name": "Colin McNally",
+          "number": "93",
+          "name": "Matt Mrozinski",
           "value": "5"
         }
       ]
@@ -52,14 +52,14 @@
       "label": "Points",
       "leaders": [
         {
+          "number": "93",
+          "name": "Matt Mrozinski",
+          "value": "15"
+        },
+        {
           "number": "17",
           "name": "Colin McNally",
           "value": "14"
-        },
-        {
-          "number": "93",
-          "name": "Matt Mrozinski",
-          "value": "12"
         },
         {
           "number": "14",
@@ -73,11 +73,6 @@
       "label": "PPG",
       "leaders": [
         {
-          "number": "17",
-          "name": "Colin McNally",
-          "value": "2.33"
-        },
-        {
           "number": "14",
           "name": "Kevin Schnablegger",
           "value": "2.20"
@@ -85,6 +80,11 @@
         {
           "number": "66",
           "name": "Shaina Johl",
+          "value": "2.00"
+        },
+        {
+          "number": "17",
+          "name": "Colin McNally",
           "value": "2.00"
         }
       ]
@@ -106,7 +106,7 @@
         {
           "number": "5",
           "name": "Paul Poirier",
-          "value": "7.60"
+          "value": "7.83"
         }
       ]
     },
@@ -127,7 +127,7 @@
         {
           "number": "5",
           "name": "Paul Poirier",
-          "value": "38"
+          "value": "47"
         }
       ]
     },
